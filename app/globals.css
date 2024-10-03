@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Default font settings */
+body {
+    font-family: 'Geist', sans-serif;
+    background-color: #ffffff;
+    color: #252324;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .hero {
+    position: relative;
+    z-index: 0; /* Ensure it's below the navbar */
+  }
+
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50; /* Higher than the hero */
+  }
+
+  @font-face {
+    font-family: 'Geist';
+    src: url('../app/fonts/Geist-Regular.woff2') format('woff2'),
+         url('../app/fonts/Geist-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Geist Bold';
+    src: url('../app/fonts/Geist-Bold.woff2') format('woff2'),
+         url('../app/fonts/Geist-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Geist Light';
+    src: url('../app/fonts/Geist-Light.woff2') format('woff2'),
+         url('../app/fonts/Geist-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Geist Medium';
+    src: url('../app/fonts/Geist-Medium.woff2') format('woff2'),
+         url('../app/fonts/Geist-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Geist SemiBold';
+    src: url('../app/fonts/Geist-SemiBold.woff2') format('woff2'),
+         url('../app/fonts/Geist-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Geist Thin';
+    src: url('../app/fonts/Geist-Thin.woff2') format('woff2'),
+         url('../app/fonts/Geist-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Geist UltraBlack';
+    src: url('../app/fonts/Geist-UltraBlack.woff2') format('woff2'),
+         url('../app/fonts/Geist-UltraBlack.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Geist UltraLight';
+    src: url('../app/fonts/Geist-UltraLight.woff2') format('woff2'),
+         url('../app/fonts/Geist-UltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Geist Mono';
+    src: url('../app/fonts/GeistMono-Medium.woff2') format('woff2'),
+         url('../app/fonts/GeistMono-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Set Geist as the default font for the entire app */
+  body {
+    font-family: 'Geist';
+
+  }
+
+  .font-medium-geist {
+    font-family: "Geist Medium";
+  }
+
+  .font-semibold-geist {
+    font-family: "Geist SemiBold";
+  }
+
+  .font-thin-geist {
+    font-family: "Geist Thin";
+  }
+
+  .font-mono-geist {
+    font-family: "Geist Mono";
+  }
+
+.szh-accordion__item-btn{
+    width: 100%;
+}
+
+/* styles/globals.css or your CSS module */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent black */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50; /* Make sure the modal is on top */
+    cursor: pointer; /* Change cursor on hover */
+  }
+
+  .modal-image {
+    max-width: 90%; /* Limit the maximum width */
+    max-height: 90%; /* Limit the maximum height */
+    object-fit: contain; /* Maintain aspect ratio */
+    transition: transform 0.3s; /* Smooth transform transition */
+  }
+
+  .modal-image:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+
+/* Scroll Down Animation */
+.mouse {
+	width: 50px;
+	height: 90px;
+	border: 3px solid #fff;
+	border-radius: 60px;
+	position: relative;
+	&::before {
+		content: '';
+		width: 12px;
+		height: 12px;
+		position: absolute;
+		top: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: #fff;
+		border-radius: 50%;
+		opacity: 1;
+		animation: wheel 2s infinite;
+		-webkit-animation: wheel 2s infinite;
+	}
+}
+
+@keyframes wheel {
+	to {
+		opacity: 0;
+		top: 60px;
+	}
+}
+
+@-webkit-keyframes wheel {
+	to {
+		opacity: 0;
+		top: 60px;
+	}
+}
