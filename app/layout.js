@@ -1,8 +1,10 @@
 import dynamic from 'next/dynamic';
+import PrelineScript from "@/components/PrelineScript";
 import localFont from "next/font/local";
 import "./globals.css";
 import 'animate.css';
 import Footer from "@/components/homepage/Footer";
+
 
 // Dynamically import Navbar to prevent server-side rendering issues
 const Navbar = dynamic(() => import('@/components/homepage/Navbar'), { ssr: false });
@@ -39,7 +41,8 @@ export default function RootLayout({ children }) {
         <Footer />
         {/* Modal Root Element */}
         <div id="modal-root"></div>
-      </body>
+          </body>
+          <PrelineScript />
     </html>
   );
 }

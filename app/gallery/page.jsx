@@ -141,7 +141,7 @@ export default function GalleryPage() {
             {/* Hero Section */}
             <section className="min-h-screen flex items-center justify-center font-geist overflow-hidden">
                 {/* Background Image */}
-                <div className="absolute inset-0 bg-cover bg-center">
+                <div className="skeleton absolute inset-0 bg-cover bg-center">
                     <Image
                         alt="hero"
                         src={localImage.image}
@@ -152,19 +152,37 @@ export default function GalleryPage() {
                 </div>
 
                 {/* Text Overlay */}
-                <div className="max-w-8xl container mx-auto relative text-white z-10 text-center">
+                {/* <div className="max-w-8xl container mx-auto relative text-white z-10 text-center">
                     <h2 className="text-3xl font-semibold uppercase">Gallery</h2>
                     <p className="mt-1 mb-1 text-gray-200 text-xl">
                         Experience the moments from our gallery
                     </p>
 
-                    {/* Scroll Down Button */}
                     <div className="flex justify-center mt-10">
                         <button
                             onClick={handleScroll}
                             className="mt-6 bg-green-800/40 text-white px-6 py-3 rounded-full inline-flex justify-center items-center mouse"
                         >
                         </button>
+                    </div>
+                </div> */}
+
+
+                {/* <div className="container justify-center mt-10 max-w-8xl mx-auto relative text-white z-10 text-center">
+                    <button
+                        onClick={handleScroll}
+                        className="mt-6 bg-green-800/40 text-white px-6 py-3 rounded-full inline-flex justify-center items-center mouse"
+                    >
+                    </button>
+                </div> */}
+
+                <div className="relative overflow-hidden w-11/12 top-40 ps-5 md:ps-10 md:pb-10">
+                    <span className="block text-white text-3xl font-medium-geist">Gallery</span>
+                    <span className="mt-1 block text-white text-xl md:text-3xl">Experience the moments & the stories!</span>
+                    <div className="mt-5">
+                        <a className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl bg-green-800/90 border border-transparent text-white hover:bg-green-700/90 focus:outline-none focus:bg-green-700/90 disabled:opacity-50 disabled:pointer-events-none" href="#" onClick={handleScroll}>
+                            Explore
+                        </a>
                     </div>
                 </div>
             </section>
@@ -179,7 +197,7 @@ export default function GalleryPage() {
             </div>
 
             {/* Gallery Section */}
-            <section ref={galleryRef} className="mt-10 grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 ml-5 mr-5 md:ml-10 lg:ml-20 md:mr-10 lg:mr-20">
+            <section ref={galleryRef} className="mt-10 grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 ml-5 mr-5 md:ml-10 lg:ml-20 md:mr-10 lg:mr-20 skeleton">
                 {galleryImages.map((image, index) => (
                     <a
                         key={index}

@@ -13,7 +13,6 @@ const useWindowSize = () => {
     });
 
     useEffect(() => {
-        // Handler to call on window resize
         const handleResize = () => {
             setWindowSize({
                 width: window.innerWidth,
@@ -21,13 +20,9 @@ const useWindowSize = () => {
             });
         };
 
-        // Add event listener
         window.addEventListener('resize', handleResize);
-
-        // Call handler right away so state gets updated with initial window size
         handleResize();
 
-        // Remove event listener on cleanup
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
@@ -40,27 +35,27 @@ const teamMembers = [
         name: 'Juliana Santos',
         image: team1,
         position: 'President',
-        bio: 'Juliana, originally from Rio de Janeiro, Brazil, moved to the U.S. in 1994 and grew up in Boston, MA, before settling in Fort Lauderdale, FL. A lifelong humanitarian, she earned her Bachelor\'s in Social Work from Florida Atlantic University in 2011. Her passion for service took her to Hohoe, Ghana, where a simple encounter with a local youth sparked the creation of the Rising Roots Foundation. Together with Amily Dupre and Kofi Andrews, she has led the foundation’s growth, striving to provide books, school supplies, and healthcare to children in need.'
+        bio: 'Juliana, originally from Rio de Janeiro, Brazil, moved to the U.S. in 1994 and grew up in Boston, MA, before settling in Fort Lauderdale, FL. A lifelong humanitarian, she earned her Bachelor\'s in Social Work from Florida Atlantic University in 2011. Her passion for service took her to Hohoe, Ghana, where a simple encounter with a local youth sparked the creation of the Rising Roots Foundation.',
     },
     {
         id: 2,
         name: 'Andrews (Kofi) Amenuvor',
         image: team2,
         position: 'Secretary',
-        bio: 'Raised in a small town in Ghana, Kofi witnessed firsthand the challenges of poverty and the lack of educational opportunities. Fortunate to have parents who valued education, he pursued teacher training to help uplift children in his community. With over 24% of Ghana\'s population living in poverty, Kofi is deeply committed to creating opportunities for children through education. As part of Rising Roots Foundation, he strives to offer guidance, encouragement, and resources to children in Hohoe, believing that education is the key to overcoming poverty.'
+        bio: 'Raised in a small town in Ghana, Kofi witnessed firsthand the challenges of poverty and the lack of educational opportunities. Fortunate to have parents who valued education, he pursued teacher training to help uplift children in his community. With over 24% of Ghana\'s population living in poverty, Kofi is deeply committed to creating opportunities for children through education.',
     },
     {
         id: 3,
         name: 'Amily Dupré Castro',
         image: team3,
         position: 'Treasurer',
-        bio: 'Amily’s journey into humanitarian work began in her youth, growing up in South Louisiana and engaging in various youth initiatives. During college, she volunteered weekly with local students to enhance their reading and education. A trip to Hohoe, Ghana, transformed her perspective, as she worked with schools and orphanages to provide educational materials and daily essentials. Inspired by her experiences and after many discussions with Kofi and Juliana, she co-founded the Rising Roots Foundation to make a lasting impact on children’s lives in Ghana through education and community support.'
-    }
+        bio: 'Amily’s journey into humanitarian work began in her youth, growing up in South Louisiana and engaging in various youth initiatives. During college, she volunteered weekly with local students to enhance their reading and education. A trip to Hohoe, Ghana, transformed her perspective, leading her to co-found the Rising Roots Foundation to support children in Ghana through education.',
+    },
 ];
 
 // Truncate Function
 const truncateBio = (bio, isExpanded, isDesktop) => {
-    const limit = 60; // Number of characters before truncating
+    const limit = 100;
     if (isDesktop || isExpanded || bio.length <= limit) {
         return bio;
     }
@@ -68,32 +63,26 @@ const truncateBio = (bio, isExpanded, isDesktop) => {
 };
 
 const TeamCard = ({ image, name, position, bio, isReversed, isExpanded, onToggleExpand }) => {
-    const size = useWindowSize(); // Get the current window size
-    const isDesktop = size.width > 768; // Determine if the screen is desktop or larger
+    const size = useWindowSize();
+    const isDesktop = size.width > 768;
 
     return (
-        <div className={`flex flex-col lg:flex-row items-center lg:items-start p-6 py-10 rounded-3xl shadow-lg bg-slate-300 lg:mr-10 lg:ml-10 ml-5 mr-5 ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
-            {/* Image and Info Container */}
-            <div className="flex items-center lg:w-1/3 mb-4 lg:mb-0 lg:mr-1 lg:ml-10 flex-shrink-0">
-                <div className="w-30 h-24 lg:w-50 lg:h-30 rounded-2xl overflow-hidden">
-                    <Image src={image} alt={name} className="w-full h-full object-cover" />
-                </div>
-                <div className="ml-4">
-                    <h3 className="font-medium-geist uppercase text-sm text-black text-pretty">{name}</h3>
-                    <p className="text-slate-700 text-[12px] uppercase">{position}</p>
-                </div>
+        <div className={`flex items-center bg-gray-200 pt-5 rounded-3xl lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col ${isReversed ? 'sm:flex-row-reverse' : ''}`}>
+            <div className="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 sm:ml-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
+                <Image src={image} alt={name} className="w-full h-full object-cover rounded-full" />
             </div>
-
-            {/* Bio Section */}
-            <div className="lg:w-2/3 text-gray-700 leading-relaxed lg:mr-10 lg:ml-10 ml-2.5 mr-2.5 text-justify text-l">
-                <p>{truncateBio(bio, isExpanded, isDesktop)}</p>
-                {/* Show 'Expand' or 'Collapse' button only on small screens */}
+            <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+                <h2 className="text-green-800 text-lg title-font font-medium-geist mb-2 sm:px-10 md:px-10 px-10 lg:px-10">{name}</h2>
+                <p className="leading-relaxed text-base text-pretty sm:px-10 md:px-10 px-10">{truncateBio(bio, isExpanded, isDesktop)}</p>
                 {!isDesktop && bio.length > 120 && (
                     <button
                         onClick={onToggleExpand}
-                        className="text-green-700 font-medium-geist uppercase place-items-end hover:underline mt-2 text-sm"
+                        className="mt-3 text-green-800 inline-flex items-center"
                     >
                         {isExpanded ? 'Show Less' : 'Expand'}
+                        <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
                     </button>
                 )}
             </div>
@@ -102,23 +91,22 @@ const TeamCard = ({ image, name, position, bio, isReversed, isExpanded, onToggle
 };
 
 function Team() {
-    const [expandedCard, setExpandedCard] = useState(null); // Track which card is expanded
+    const [expandedCard, setExpandedCard] = useState(null);
 
     const handleToggleExpand = (id) => {
-        setExpandedCard((prev) => (prev === id ? null : id)); // Collapse if clicked again, otherwise expand
+        setExpandedCard((prev) => (prev === id ? null : id));
     };
 
     return (
-        <section className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-1">
-                <h1 className="md:text-3xl text-2xl font-semibold-geist text-black uppercase">Meet Our Team</h1>
-                <p className="p-5 font-geist text-l md:text-xl">
-                    Empowering charities with innovative <br />solutions for a brighter future.
-                </p>
-            </div>
+        <section className="text-gray-600 body-font">
+            <div className="container px-5 py-24 mx-auto">
+                <div className="text-center mb-1">
+                    <h1 className="md:text-3xl text-2xl font-semibold-geist text-black uppercase">Meet Our Team</h1>
+                    <p className="p-5 font-geist text-l md:text-xl mb-10">
+                        Empowering charities with innovative <br /> solutions for a brighter future.
+                    </p>
+                </div>
 
-            {/* Team Cards */}
-            <div className="space-y-8 mb-10">
                 {teamMembers.map((member, index) => (
                     <TeamCard
                         key={member.id}
@@ -126,9 +114,9 @@ function Team() {
                         name={member.name}
                         position={member.position}
                         bio={member.bio}
-                        isReversed={index % 2 === 1} // Alternate between normal and reversed layout
-                        isExpanded={expandedCard === member.id} // Check if this card is expanded
-                        onToggleExpand={() => handleToggleExpand(member.id)} // Toggle expand for this card
+                        isReversed={index % 2 === 1} // Corrected alternating layout
+                        isExpanded={expandedCard === member.id}
+                        onToggleExpand={() => handleToggleExpand(member.id)}
                     />
                 ))}
             </div>

@@ -18,6 +18,14 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'pixieset.com',  // Pixieset (general domain)
             },
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',  // Unsplash (specific subdomain)
+            },
+            {
+                protocol: 'https',
+                hostname: 'github.com',  // Github (main domain)
+            },
         ],
     },
 };

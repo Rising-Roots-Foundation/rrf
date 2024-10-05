@@ -1,16 +1,15 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';  // Import toastify components
-import 'react-toastify/dist/ReactToastify.css';  // Import toastify styles
-import ModalComponent from "@/components/Modal";
-import DonationForm from "@/components/DonationForm";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
 
 function ComingSoon() {
     const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen, setModalOpen] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+    const openModal = () => setModalOpen(true);
+    const closeModal = () => setModalOpen(false);
 
     const calculateTimeLeft = () => {
         const launchDate = new Date("2024-12-31T00:00:00");
@@ -97,29 +96,23 @@ function ComingSoon() {
                     className="w-full sm:w-80 px-4 py-3 rounded-lg font-geist text-slate-800 shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
                     placeholder="Enter your email"
                 />
-                <button
-                    onClick={handleSubmit}
-                    className="px-4 py-3 bg-green-800 text-white font-medium-geist rounded-xl shadow-sm hover:bg-green-700 transition-all">
-                    Notify Me
-                </button>
+                <Link href="/donate">
+                    <button
+                        className="w-full sm:80 px-4 py-3 bg-green-800 text-white font-medium-geist rounded-xl shadow-sm hover:bg-green-700 transition-all">
+                        Notify Me
+                    </button>
+                </Link>
             </div>
 
             <div className="md:hidden flex flex-col items-center my-10">
-            <div className="font-medium-geist text-xl justify-center p-5">Want to help a child?</div>
-            <button
-                onClick={openModal}
-                className="px-14 py-3 bg-green-800 text-white text-md font-medium-geist rounded-xl shadow-sm hover:bg-green-700 transition-all">
-                Donate Now
-            </button>
+                <div className="font-medium-geist text-xl justify-center p-5">Want to help a child?</div>
+                <Link href="/donate">
+                    <button
+                        className="px-14 py-3 bg-green-800 text-white text-md font-medium-geist rounded-xl shadow-sm hover:bg-green-700 transition-all">
+                        Donate Now
+                    </button>
+                </Link>
             </div>
-
-
-            {/* Modal Component */}
-      <ModalComponent isOpen={isModalOpen} onClose={closeModal} contentLabel="Donate Modal" className="font-geist">
-        <h2 className="text-l font-medium-geist mb-4 uppercase">Make a Donation</h2>
-        <p className="text-gray-600 font-geist">A donation can make a big change</p>
-        <DonationForm />
-      </ModalComponent>
 
             {/* Toast container */}
             <ToastContainer />

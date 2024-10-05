@@ -4,8 +4,6 @@ import { FiArrowUpRight } from "react-icons/fi";
 import { FaRegSmile, FaHeart } from "react-icons/fa";
 import { IoPlay } from "react-icons/io5";
 import Image from 'next/image';
-import ModalComponent from '../Modal';
-import DonationForm from '../DonationForm';
 import Link from 'next/link';
 import hero1 from '@/app/images/hero1.jpg';
 import hero2 from '@/app/images/hero2.jpg';
@@ -37,7 +35,6 @@ const images = [
 ];
 
 function Hero() {
-    const [isModalOpen, setModalOpen] = useState(false);
     const heroSectionCardsRef = useRef(null); // Reference to Hero Section Cards
     const [currentImage, setCurrentImage] = useState(0);
     const navbarHeight = 80; // Height of the sticky Navbar, adjust accordingly
@@ -82,7 +79,7 @@ function Hero() {
                                 className="absolute inset-0 bg-cover bg-center"
                                 style={{ backgroundImage: `url(${src.image})` }}
                             >
-                                <div className="absolute inset-0 bg-black/20 z-0"></div>
+                                <div className="skeleton absolute inset-0 bg-black/20 z-0"></div>
                                 <Image
                                     alt="hero"
                                     src={src.image}
@@ -230,12 +227,6 @@ function Hero() {
                         </div>
                     </div>
                 </div>
-
-                <ModalComponent isOpen={isModalOpen} onClose={closeModal} contentLabel="Example Modal">
-                    <h2 className="text-xl font-medium-geist mb-4">Make a Donation</h2>
-                    <p className="text-gray-600">A donation can make a big change</p>
-                    <DonationForm />
-                </ModalComponent>
             </section>
         </main>
     );

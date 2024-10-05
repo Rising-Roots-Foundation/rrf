@@ -18,7 +18,7 @@ const ContactUs = () => {
       <div className="container mx-auto py-20 flex justify-center animate__animated animate__fadeInUp sm:ml-0 sm:mr-0 md:ml-10 md:mr-10 lg:mr-0 lg:ml-0">
         <div className="bg-white grid md:grid-cols-2 gap-10">
           {/* Contact Info Section */}
-          <div className=" p-6  rounded-t-lg md:rounded-l-lg md:rounded-tr-none text-gray-600">
+          <div className=" p-6 rounded-t-lg md:rounded-l-lg md:rounded-tr-none text-gray-600">
             <h2 className="text-2xl font-medium-geist mb-4 uppercase">Our Contacts</h2>
             <p className="mb-2">Reach out to us through any of the methods below</p>
 

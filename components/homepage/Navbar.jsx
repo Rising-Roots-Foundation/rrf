@@ -1,9 +1,8 @@
 'use client';
 import React, { useState } from "react";
-import ModalComponent from "../Modal";
-import DonationForm from "../DonationForm";
 import Image from "next/image";
 import logo from '@/app/images/logo.png';
+import Link from "next/link";
 
 // Navigation links
 const links = [
@@ -16,7 +15,6 @@ const links = [
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false); // Mobile menu toggle
-    const [isModalOpen, setModalOpen] = useState(false); // Donation modal toggle
 
     // Toggle functions for modal and mobile menu
     const toggleModal = () => setModalOpen((prev) => !prev);
@@ -48,12 +46,13 @@ const Navbar = () => {
 
                     {/* Desktop Donate Button */}
                     <div className="hidden md:flex">
+                        <Link href="/donate">
                         <button
                             className="bg-green-800 text-white px-5 py-2 rounded-lg uppercase text-sm mr-5"
-                            onClick={toggleModal}
                         >
                             Donate now
-                        </button>
+                            </button>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Toggle Button */}
@@ -87,22 +86,16 @@ const Navbar = () => {
                                 {link.label}
                             </a>
                         ))}
+                        <Link href="/donate">
                         <button
                             className="bg-green-800 text-white px-5 py-2 rounded-full text-sm hover:bg-slate-500 uppercase"
-                            onClick={toggleModal}
                         >
                             Donate now
-                        </button>
+                            </button>
+                        </Link>
                     </div>
                 </div>
             )}
-
-            {/* Modal Component */}
-            <ModalComponent isOpen={isModalOpen} onClose={toggleModal} contentLabel="Donate Modal">
-                <h2 className="text-lg font-medium-geist mb-4 uppercase">Make a Donation</h2>
-                <p className="text-gray-600 font-geist">A donation can make a big change</p>
-                <DonationForm />
-            </ModalComponent>
         </nav>
     );
 };

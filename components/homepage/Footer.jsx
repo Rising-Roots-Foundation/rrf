@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import ModalComponent from "../Modal";
-import DonationForm from "../DonationForm";
+import Link from 'next/link';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { BsTwitterX } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
@@ -53,12 +52,14 @@ function Footer() {
                 </div>
 
                 {/* Donate Button */}
-                <button className="mt-4 mb-4 w-60 flex items-center justify-between px-4 py-3 bg-white text-green-600 rounded-xl md:ml-20 lg:ml-40 md:mr-20 lg:mr-40" onClick={openModal}>
+                <Link href="/donate">
+                <button className="mt-4 mb-4 w-60 flex items-center justify-between px-4 py-3 bg-white text-green-600 rounded-xl md:ml-20 lg:ml-40 md:mr-20 lg:mr-40">
                     <span>Donate now</span>
                     <div className="w-6 h-6 bg-lime-300 rounded-full flex justify-center items-center">
                         <FiArrowUpRight />
                     </div>
                 </button>
+                </Link>
 
                 <hr className="bg-white md:ml-20 lg:ml-40 md:mr-20 lg:mr-40" />
 
@@ -87,13 +88,6 @@ function Footer() {
                 "Every contribution you make plants a seed of hope, nurturing dreams and building futures. Together, we can transform lives, one donation at a time, and create a world where every child has the opportunity to grow, learn, and succeed. Join us in making a lasting difference."
                 </div>
             </div>
-
-            {/* Modal Component */}
-      <ModalComponent isOpen={isModalOpen} onClose={closeModal} contentLabel="Donate Modal">
-        <h2 className="text-xl font-medium-geist mb-4">Make a Donation</h2>
-        <p className="text-gray-600">A donation can make a big change </p>
-        <DonationForm />
-      </ModalComponent>
         </footer>
     );
 }
