@@ -25,7 +25,7 @@ const Donate = () => {
 
     return (
         <section>
-            <div className="mx-auto py-20 flex flex-col items-center animate__animated animate__fadeInUp sm:ml-0 sm:mr-0 md:ml-20 md:mr-20 lg:mr-20 lg:ml-20">
+            <div className="mx-auto py-20 flex flex-col items-center animate__animated animate__fadeInUp md:ml-20 md:mr-20 lg:mr-20 lg:ml-20 mr-10 ml-10">
                 <div className="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                     <div className="lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center">
                         <div className="lg:col-span-7">
