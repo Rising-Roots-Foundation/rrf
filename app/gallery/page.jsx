@@ -205,7 +205,7 @@ export default function GalleryPage() {
                         className="group overflow-hidden rounded-lg shadow-lg bg-white transition-transform duration-300 hover:scale-105"
                         loading="lazy"
                     >
-                        <img
+                        <Image
                             src={image.src}
                             alt={image.alt}
                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"

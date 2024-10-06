@@ -13,7 +13,7 @@ function ProjectsPage() {
         const response = await fetch('link here');
         const data = await response.json();
 
-        const projectData = data.slice(0, 4).map((item, index) => ({
+        const projectData = data.slice(0, 4).map((item) => ({
           title: item.title,
           description: item.body,
           image: `link here`

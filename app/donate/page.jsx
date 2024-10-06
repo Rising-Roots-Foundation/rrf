@@ -6,22 +6,8 @@ import DonateForm from '@/components/DonateForm';
 
 const Donate = () => {
     const {
-        register,
-        handleSubmit,
-        formState: { errors },
+        formState: {},
     } = useForm();
-
-    const onSubmit = (data) => {
-        // Use this data for both payment methods if needed
-        console.log('Form submitted:', data);
-    };
-
-    const handlePayPalClick = (data) => {
-        // Handle PayPal donation
-        const { name, email } = data;
-        const paypalUrl = `https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=JWTF65REUU42W&fbclid=PAZXh0bgNhZW0CMTEAAabMTmbPAX0vMYOc1RgjoJqDXaJe7V6-ilm_Fh2DHe-9w90vt9UGThpeaKE_aem_qxFKR7SrMxto_YMeK8gnYw`;
-        window.open(paypalUrl, '_blank');
-    };
 
     return (
         <section>

@@ -1,5 +1,5 @@
 // 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import CountUp from 'react-countup';
 import { FiArrowUpRight } from "react-icons/fi";
 import { useInView } from 'react-intersection-observer';

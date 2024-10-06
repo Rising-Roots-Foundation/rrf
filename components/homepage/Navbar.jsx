@@ -32,7 +32,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Links */}
-                    <div className="hidden md:flex items-center space-x-4 rounded-lg bg-green-800/50 px-4 py-2">
+                    <div className="hidden md:flex items-center space-x-1 lg:space-x-4 rounded-lg bg-green-800 px-4 py-2 md:px-1 md:py-1">
                         {links.map((link) => (
                             <a
                                 key={link.href}
@@ -48,7 +48,7 @@ const Navbar = () => {
                     <div className="hidden md:flex">
                         <Link href="/donate">
                         <button
-                            className="bg-green-800 text-white px-5 py-2 rounded-lg uppercase text-sm mr-5"
+                                className="bg-green-800 text-white ld:px-5 lg:py-2 px-3 py-2 lg:text-l rounded-lg uppercase text-sm mr-5"
                         >
                             Donate now
                             </button>

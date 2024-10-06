@@ -54,9 +54,9 @@ const teamMembers = [
 ];
 
 // Truncate Function
-const truncateBio = (bio, isExpanded, isDesktop, isTablet) => {
+const truncateBio = (bio, isExpanded, isDesktop) => {
     const limit = 110;
-    if (isDesktop || isTablet || isExpanded || bio.length <= limit) {
+    if (isDesktop || isExpanded || bio.length <= limit) {
         return bio;
     }
     return bio.slice(0, limit) + '...';
@@ -64,7 +64,6 @@ const truncateBio = (bio, isExpanded, isDesktop, isTablet) => {
 
 const TeamCard = ({ image, name, position, bio, isReversed, isExpanded, onToggleExpand }) => {
     const size = useWindowSize();
-    // const isTablet = size.width > 768;
     const isDesktop = size.width > 1024;
 
     return (
