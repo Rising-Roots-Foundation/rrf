@@ -32,7 +32,7 @@ function Footer() {
     const [isLoading, setIsLoading] = useState(false);
     const [email, setEmail] = useState('');
 
-    const openModal = () => setModalOpen(true);
+    // const openModal = () => setModalOpen(true);
     const closeModal = () => setModalOpen(false);
 
     const currentYear = new Date().getFullYear();

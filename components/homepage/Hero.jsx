@@ -51,7 +51,7 @@ function Hero() {
     }, []);
 
     const openModal = () => setModalOpen(true);
-    const closeModal = () => setModalOpen(false);
+    // const closeModal = () => setModalOpen(false);
 
     const handleScroll = () => {
         if (heroSectionCardsRef.current) {

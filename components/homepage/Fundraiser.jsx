@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 import React, { useState } from 'react';
 import CountUp from 'react-countup';
 import { FiArrowUpRight } from "react-icons/fi";

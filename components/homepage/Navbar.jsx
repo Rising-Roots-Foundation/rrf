@@ -17,7 +17,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false); // Mobile menu toggle
 
     // Toggle functions for modal and mobile menu
-    const toggleModal = () => setModalOpen((prev) => !prev);
+    // const toggleModal = () => setModalOpen((prev) => !prev);
     const toggleMenu = () => setIsOpen((prev) => !prev);
 
     return (

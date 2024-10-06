@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import Image from 'next/image';
 
 const DonateForm = () => {
     const {
@@ -64,7 +65,7 @@ const DonateForm = () => {
                     </p>
                 </div>
                 <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                    <img className="object-cover object-center rounded" alt="logo" src="/images/logo_rising_roots.jpg" />
+                    <Image className="object-cover object-center rounded" alt="logo" src="/images/logo_rising_roots.jpg" />
                 </div>
             </div>
         </section>

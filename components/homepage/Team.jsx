@@ -54,9 +54,9 @@ const teamMembers = [
 ];
 
 // Truncate Function
-const truncateBio = (bio, isExpanded, isDesktop) => {
-    const limit = 100;
-    if (isDesktop || isExpanded || bio.length <= limit) {
+const truncateBio = (bio, isExpanded, isDesktop, isTablet) => {
+    const limit = 110;
+    if (isDesktop || isTablet || isExpanded || bio.length <= limit) {
         return bio;
     }
     return bio.slice(0, limit) + '...';
@@ -64,20 +64,30 @@ const truncateBio = (bio, isExpanded, isDesktop) => {
 
 const TeamCard = ({ image, name, position, bio, isReversed, isExpanded, onToggleExpand }) => {
     const size = useWindowSize();
-    const isDesktop = size.width > 768;
+    // const isTablet = size.width > 768;
+    const isDesktop = size.width > 1024;
 
     return (
-        <div className={`flex items-center bg-gray-200 pt-5 rounded-3xl lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col ${isReversed ? 'sm:flex-row-reverse' : ''}`}>
-            <div className="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 sm:ml-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
-                <Image src={image} alt={name} className="w-full h-full object-cover rounded-full" />
+        <div className={`flex items-center bg-gray-200 pt-5 rounded-3xl lg:w-4/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col ${isReversed ? 'sm:flex-row-reverse' : ''}`}>
+            <div className="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 sm:ml-10 mt-10 inline-flex flex-col items-center justify-center rounded-full flex-shrink-0">
+                <Image
+                    src={image}
+                    alt={name}
+                    className="w-full h-full rounded-full lg:mr-10 lg:ml-10 md:mr-10 md:ml-5"
+                />
+                <h3 className="text-green-800 text-l title-font font-medium-geist mt-2 sm:px-10 md:px-10 px-10 lg:px-10 uppercase">
+                    {position}
+                </h3>
             </div>
+
             <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                <h2 className="text-green-800 text-lg title-font font-medium-geist mb-2 sm:px-10 md:px-10 px-10 lg:px-10">{name}</h2>
+                <h2 className="text-green-800 text-lg title-font font-medium-geist mb-2 md:mt-2 lg:mt-2 sm:px-10 md:px-10 px-10 lg:px-10 uppercase">{name}</h2>
+
                 <p className="leading-relaxed text-base text-pretty sm:px-10 md:px-10 px-10">{truncateBio(bio, isExpanded, isDesktop)}</p>
                 {!isDesktop && bio.length > 120 && (
                     <button
                         onClick={onToggleExpand}
-                        className="mt-3 text-green-800 inline-flex items-center"
+                        className="bg-gray-300 rounded-xl md:ml-10 md:mr-10 lg:ml-10 lg:mr-10 mt-3 md:mt-10 text-green-800 inline-flex sm:px-7 md:px-7 px-7 items-center"
                     >
                         {isExpanded ? 'Show Less' : 'Expand'}
                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
