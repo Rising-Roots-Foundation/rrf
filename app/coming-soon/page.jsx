@@ -1,72 +1,65 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
 
 function ComingSoon() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isModalOpen, setModalOpen] = useState(false);
-
-    const openModal = () => setModalOpen(true);
-    const closeModal = () => setModalOpen(false);
-
-    const calculateTimeLeft = () => {
-        const launchDate = new Date("2024-12-31T00:00:00");
-        const currentTime = new Date();
-        const difference = launchDate - currentTime;
-
-        let timeLeft = {};
-
-        if (difference > 0) {
-            timeLeft = {
-                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                minutes: Math.floor((difference / 1000 / 60) % 60),
-                seconds: Math.floor((difference / 1000) % 60),
-            };
-        }
-
-        return timeLeft;
-    };
-
     const [email, setEmail] = useState('');
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+    const [isLoading, setIsLoading] = useState(false); // New state to track loading
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setTimeLeft(calculateTimeLeft());
-        }, 1000);
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent the default form submission
+        setIsLoading(true); // Start loading spinner
 
-        return () => clearTimeout(timer);
-    });
+        try {
+            const response = await fetch('/api/waitlist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }), // Send the email to the server
+            });
 
-    const timerComponents = [];
-
-    Object.keys(timeLeft).forEach((interval) => {
-        if (!timeLeft[interval]) {
-            return;
+            if (response.ok) {
+                toast.success("Great! We'll alert you soon.", {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setEmail(''); // Clear the input field
+            } else {
+                const errorData = await response.json();
+                toast.error(`Subscription failed: ${errorData.error || 'Unknown error'}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
+        } catch (error) {
+            toast.error(`Network error: ${error.message}`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light"
+            });
+        } finally {
+            setIsLoading(false); // Stop loading spinner
         }
-
-        timerComponents.push(
-            <span key={interval} className="text-xl lg:text-3xl font-semibold-geist text-slate-800 mx-2">
-                {timeLeft[interval]} {interval}
-            </span>
-        );
-    });
-
-    const handleSubmit = () => {
-        // Simulate the email being sent
-        toast.success("We'll alert you soon!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-        setEmail('');
     };
 
     return (
@@ -78,41 +71,38 @@ function ComingSoon() {
                 We're launching something awesome! Stay tuned.
             </p>
 
-            {/* GO Live */}
-            {/* {timerComponents.length ? (
-                <div className="flex items-center font-medium-geist justify-center mb-10">
-                    {timerComponents}
-                </div>
-            ) : (
-                <span className="text-xl lg:text-3xl font-medium-geist text-green-600">We are Live!</span>
-            )} */}
-
-            {/* Newsletter Form */}
-            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
+            {/* Waitlist Form */}
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 mb-10">
                 <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full sm:w-80 px-4 py-3 rounded-lg font-geist text-slate-800 shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
                     placeholder="Enter your email"
+                    required
                 />
-                <Link href="/donate">
-                    <button
-                        className="w-full sm:80 px-4 py-3 bg-green-800 text-white font-medium-geist rounded-xl shadow-sm hover:bg-green-700 transition-all">
-                        Notify Me
-                    </button>
-                </Link>
-            </div>
+                <button
+                    type="submit"
+                    className="w-full sm:w-80 px-4 py-3 bg-green-800 text-white font-medium-geist rounded-xl shadow-sm hover:bg-green-700 transition-all flex items-center justify-center"
+                    disabled={isLoading} // Disable the button while loading
+                >
+                    {isLoading ? (
+                        <svg className="animate-spin h-5 w-5 text-white mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                        </svg>
+                    ) : (
+                        'Notify Me'
+                    )}
+                </button>
+            </form>
 
-            <div className="md:hidden flex flex-col items-center my-10">
-                <div className="font-medium-geist text-xl justify-center p-5">Want to help a child?</div>
-                <Link href="/donate">
-                    <button
-                        className="px-14 py-3 bg-green-800 text-white text-md font-medium-geist rounded-xl shadow-sm hover:bg-green-700 transition-all">
-                        Donate Now
-                    </button>
-                </Link>
-            </div>
+            {/* Other components remain unchanged */}
+            <Link href="/donate">
+                <button className="px-14 py-3 bg-green-800 text-white text-md font-medium-geist rounded-xl shadow-sm hover:bg-green-700 transition-all">
+                    Donate Now
+                </button>
+            </Link>
 
             {/* Toast container */}
             <ToastContainer />
