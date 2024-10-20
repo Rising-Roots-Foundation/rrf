@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-const ProjectCard = ({ title, description, image, blurDataURL }) => (
+const ProjectCard = ({ title, description, image }) => (
     <figure className="relative w-full h-60">
         <Image
             className="absolute top-0 left-0 object-cover rounded-xl"
