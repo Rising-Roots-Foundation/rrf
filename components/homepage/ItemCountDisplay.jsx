@@ -17,7 +17,7 @@ const formatCount = (count) => {
     if (count >= 1000) {
         return `${(count / 1000).toFixed(1).replace(/\.0$/, '')}k+`;
     }
-    return `${count}`; // Removed '+' for counts less than 1000
+    return `${count}`;
 };
 
 const ItemCountDisplay = () => {
@@ -42,10 +42,10 @@ const ItemCountDisplay = () => {
                 </h2>
             </div>
 
-            <div className="icon-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="icon-container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4"> {/* Ensuring two columns on mobile */}
                 {items.map((item, index) => (
-                    <div key={index} className="icon-item border rounded-3xl text-center font-medium-geist p-4 flex flex-col items-center"> {/* Centered icon */}
-                        <div className="icon text-green-800 flex justify-center"> {/* Center the icon */}
+                    <div key={index} className="icon-item border rounded-3xl text-center font-medium-geist p-4 flex flex-col items-center">
+                        <div className="icon text-green-800 flex justify-center">
                             {item.icon}
                         </div>
                         <p className="text-green-950 text-xl font-medium-geist">
