@@ -73,7 +73,7 @@ function Footer() {
                 <div className="bg-white p-6 rounded-2xl mb-8 mt-10 md:ml-20 lg:ml-40 md:mr-20 lg:mr-40">
                     <h2 className="text-green-800 text-xl font-semibold-geist mb-4">Subscribe to our Newsletter</h2>
                     <p className="text-green-600 mb-4">
-                        Stay updated with our latest projects and activities by subscribing to our newsletter.
+                        Stay updated with our latest Events and activities by subscribing to our newsletter.
                     </p>
                     <form onSubmit={handleSubscribe} className="flex flex-col md:flex-row gap-4">
                         <input

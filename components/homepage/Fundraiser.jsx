@@ -12,7 +12,7 @@ function Fundraiser() {
             <div className="flex justify-between items-center flex-wrap">
                 <h1 className="md:text-3xl text-2xl font-semibold-geist uppercase">Recent Activities in Ghana</h1>
                 <div>
-                    <a href="/projects" className="text-green-700 font-semibold-geist text-2xl uppercase flex justify-between gap-3">See All <FiArrowUpRight className="w-7 h-7 bg-gray-600 rounded-full flex items-center" /></a>
+                    <a href="/Events" className="text-green-700 font-semibold-geist text-2xl uppercase flex justify-between gap-3">See All <FiArrowUpRight className="w-7 h-7 bg-gray-600 rounded-full flex items-center" /></a>
                 </div>
             </div>
 
@@ -22,7 +22,7 @@ function Fundraiser() {
                     <div className="aspect-w-16 aspect-h-12 overflow-hidden bg-gray-100 rounded-2xl dark:bg-neutral-800">
                         <Image
                             className="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out object-cover rounded-2xl"
-                            src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1365-Edit.JPG?raw=true"
+                            src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1767-Edit.JPG?raw=true"
                             alt="Activity Image"
                             width={540}
                             height={375}
@@ -55,7 +55,7 @@ function Fundraiser() {
                     <div className="aspect-w-16 aspect-h-12 overflow-hidden bg-gray-100 rounded-2xl dark:bg-neutral-800">
                         <Image
                             className="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out object-cover rounded-2xl"
-                            src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1365-Edit.JPG?raw=true"
+                            src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1847-Edit.JPG?raw=true"
                             alt="Activity Image"
                             width={540}
                             height={375}
@@ -85,7 +85,7 @@ function Fundraiser() {
                     <div className="aspect-w-16 aspect-h-12 overflow-hidden bg-gray-100 rounded-2xl dark:bg-neutral-800">
                         <Image
                             className="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out object-cover rounded-2xl"
-                            src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1365-Edit.JPG?raw=true"
+                            src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1844-Edit.JPG?raw=true"
                             alt="Activity Image"
                             width={540}
                             height={375}
@@ -144,7 +144,7 @@ function Fundraiser() {
 
 
             {/* Counter Section */}
-        <ItemCountDisplay/>
+            <ItemCountDisplay className="animate__animated animate__fadeInUp" />
 
         </div>
     );
