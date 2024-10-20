@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { FiArrowUpRight } from 'react-icons/fi';
-import { BsTwitterX } from "react-icons/bs";
-import { FaLinkedin } from "react-icons/fa";
+import { SlSocialInstagram } from "react-icons/sl";
 import { FaFacebook } from "react-icons/fa";
 
 const Modal = ({ isOpen, onClose }) => {
@@ -121,17 +120,15 @@ function Footer() {
                 <div className="flex flex-wrap justify-between mt-5 gap-5 md:ml-20 lg:ml-40 md:mr-20 lg:mr-40">
                     <div className="inline-flex gap-3 md:gap-10 text-white text-sm md:text-normal">
                         <p>&nbsp;&copy; {currentYear} Rising Roots Foundation</p>
-                        <p><a href="#">Cookie Policy</a></p>
+                        {/* <p><a href="#">Cookie Policy</a></p> */}
+                        <p className="items-center">Designed by <a href="https://www.aibsmart.com"><span className="font-medium-geist hover:underline hover:underline-offset-2">aib.smart</span></a></p>
                     </div>
 
-                    <div className="inline-flex gap-3 md:gap-10 text-white">
-                        <a href="#" className="text-white hover:text-green-800 transition duration-300">
-                            <BsTwitterX />
+                    <div className="inline-flex gap-2 md:gap-7 text-white">
+                        <a href="https://www.instagram.com/rrootsfoundation/profilecard/?igsh=aGp6Y3Mxcml3eHMw" className="text-white hover:underline hover:underline-offset-2">
+                            <SlSocialInstagram />
                         </a>
-                        <a href="#" className="text-white hover:text-green-800 transition duration-300">
-                            <FaLinkedin />
-                        </a>
-                        <a href="#" className="text-white hover:text-green-800 transition duration-300">
+                        <a href="https://www.facebook.com/RRootsFoundation?mibextid=LQQJ4d" className="text-white transition hover:underline hover:underline-offset-2 duration-300">
                             <FaFacebook />
                         </a>
                     </div>
