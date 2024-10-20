@@ -8,6 +8,10 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
+                hostname: 'www.risingrootsfoundation.org',  // GitHub
+            },
+            {
+                protocol: 'https',
                 hostname: 'raw.githubusercontent.com',  // GitHub
             },
             {

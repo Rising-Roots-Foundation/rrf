@@ -111,7 +111,7 @@ function EventsPage() {
                                     <h2 className="text-2xl font-semibold-geist lg:text-4xl">Nurturing Education & Empowering Communities</h2>
 
                                     <div className="flex items-center gap-x-5">
-                                        <a className="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-xl text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200" href="#">
+                                        <a className="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-xl text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200" href="/donate">
                                             Donate
                                         </a>
                                         <p className="text-xs sm:text-sm text-gray-800">September 2024</p>

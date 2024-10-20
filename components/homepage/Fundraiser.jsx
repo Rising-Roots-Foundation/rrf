@@ -1,151 +1,109 @@
-// 'use client';
 import React from 'react';
 import { FiArrowUpRight } from "react-icons/fi";
 import ItemCountDisplay from "@/components/homepage/ItemCountDisplay";
-
 import Image from 'next/image';
 
 function Fundraiser() {
-
     return (
         <div className="max-w-8xl mx-auto py-10 px-5 md:px-0 mt-10 md:ml-20 lg:ml-20 md:mr-20 lg:mr-20">
             <div className="flex justify-between items-center flex-wrap">
                 <h1 className="md:text-3xl text-2xl font-semibold-geist uppercase">Recent Activities in Ghana</h1>
                 <div>
-                    <a href="/Events" className="text-green-700 font-semibold-geist text-2xl uppercase flex justify-between gap-3">See All <FiArrowUpRight className="w-7 h-7 bg-gray-600 rounded-full flex items-center" /></a>
+                    <a href="/Events" className="text-green-700 font-semibold-geist text-2xl uppercase flex justify-between gap-3">
+                        See All <FiArrowUpRight className="w-7 h-7 bg-gray-600 rounded-full flex items-center" />
+                    </a>
                 </div>
             </div>
 
-            {/* Cards Section */}
-            <div className="py-12 grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12">
-                <a className="group flex flex-col focus:outline-none" href="#">
-                    <div className="aspect-w-16 aspect-h-12 overflow-hidden bg-gray-100 rounded-2xl dark:bg-neutral-800">
-                        <Image
-                            className="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out object-cover rounded-2xl"
-                            src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1767-Edit.JPG?raw=true"
-                            alt="Activity Image"
-                            width={540}
-                            height={375}
-                        />
-                    </div>
-
-                    <div className="pt-4">
-                        <h3 className="relative inline-block font-medium-geist text-lg text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-green-800 before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-100">
-                            Digital Learning Hub
-                        </h3>
-                        <p className="mt-1 text-green-800 dark:text-neutral-400">
-                            Empowering pupils through digital education tools
-                        </p>
-
-                        <div className="mt-3 flex flex-wrap gap-2">
-                            <span className="py-1.5 px-3 text-green-800 border border-green-800 text-xs sm:text-sm rounded-xl">
-                                Education
-                            </span>
-                            <span className="py-1.5 px-3 text-green-800 border border-green-800 text-xs sm:text-sm rounded-xl">
-                                Curriculum
-                            </span>
-                            <span className="py-1.5 px-3 text-green-800 border border-green-800 text-xs sm:text-sm rounded-xl">
-                                Pupils
-                            </span>
+            <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+                <div className="grid lg:grid-cols-2 gap-6">
+                    <a className="group sm:flex rounded-xl focus:outline-none" href="/events">
+                        <div className="shrink-0 relative rounded-xl overflow-hidden h-[200px] sm:w-[250px] sm:h-[350px] w-full">
+                            <Image className="size-full absolute top-0 start-0 object-cover" src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1779-Edit.JPG?raw=true" alt="Event 01"
+                                width={560}
+                                height={375}
+                                loading="lazy"/>
                         </div>
-                    </div>
-                </a>
-
-                <a className="group flex flex-col focus:outline-none" href="#">
-                    <div className="aspect-w-16 aspect-h-12 overflow-hidden bg-gray-100 rounded-2xl dark:bg-neutral-800">
-                        <Image
-                            className="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out object-cover rounded-2xl"
-                            src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1847-Edit.JPG?raw=true"
-                            alt="Activity Image"
-                            width={540}
-                            height={375}
-                        />
-                    </div>
-
-                    <div className="pt-4">
-                        <h3 className="relative inline-block font-medium-geist text-lg text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-green-800 before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-100">
-                            Donation Drive
-                        </h3>
-                        <p className="mt-1 text-green-800 dark:text-neutral-400">
-                            Supporting educational access through donations
-                        </p>
-
-                        <div className="mt-3 flex flex-wrap gap-2">
-                            <span className="py-1.5 px-3 text-green-800 border border-green-800 text-xs sm:text-sm rounded-xl">
-                                Donations
-                            </span>
-                            <span className="py-1.5 px-3 text-green-800 border border-green-800 text-xs sm:text-sm rounded-xl">
-                                Community
-                            </span>
+                        <div className="grow">
+                            <div className="p-4 flex flex-col h-full sm:p-6">
+                                <div className="mb-3">
+                                    <p className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
+                                        Donation
+                                    </p>
+                                </div>
+                                <h3 className="text-lg sm:text-2xl font-semibold-geist text-gray-800 group-hover:text-blue-600 group-focus:text-blue-600">
+                                    Printer Donation to Schools
+                                </h3>
+                                <p className="mt-2 text-gray-600">
+                                    This is to aid printing of documents, examination papers, etc.
+                                </p>
+                                <div className="mt-5 sm:mt-auto">
+                                    <div className="flex items-center">
+                                        <div className="shrink-0">
+                                            <Image className="size-[46px] rounded-full" src="https://www.risingrootsfoundation.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_rising_roots.35926510.jpg&w=828&q=75" alt="Avatar"
+                                                width={50}
+                                                height={50}
+                                                loading="lazy"/>
+                                        </div>
+                                        <div className="ms-2.5 sm:ms-4">
+                                            <h4 className="font-semibold-geist text-gray-800">
+                                                Rising Roots Foundation
+                                            </h4>
+                                            <p className="text-xs text-gray-500">
+                                                Aug 2024
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
 
-                <a className="group flex flex-col focus:outline-none" href="#">
-                    <div className="aspect-w-16 aspect-h-12 overflow-hidden bg-gray-100 rounded-2xl dark:bg-neutral-800">
-                        <Image
-                            className="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out object-cover rounded-2xl"
-                            src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1844-Edit.JPG?raw=true"
-                            alt="Activity Image"
-                            width={540}
-                            height={375}
-                        />
-                    </div>
-
-                    <div className="pt-4">
-                        <h3 className="relative inline-block font-medium-geist text-lg text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-green-800 before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-100">
-                            Teacher Support
-                        </h3>
-                        <p className="mt-1 text-green-800 dark:text-neutral-400">
-                            Enhancing teacher resources to improve learning outcomes
-                        </p>
-
-                        <div className="mt-3 flex flex-wrap gap-2">
-                            <span className="py-1.5 px-3 text-green-800 border border-green-800 text-xs sm:text-sm rounded-xl">
-                                Teachers
-                            </span>
-                            <span className="py-1.5 px-3 text-green-800 border border-green-800 text-xs sm:text-sm rounded-xl">
-                                Resources
-                            </span>
+                    <a className="group sm:flex rounded-xl focus:outline-none" href="/events">
+                        <div className="shrink-0 relative rounded-xl overflow-hidden h-[200px] sm:w-[250px] sm:h-[350px] w-full">
+                            <Image className="size-full absolute top-0 start-0 object-cover" src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1847-Edit.JPG?raw=true" alt="Blog Image"
+                                width={560}
+                                height={375}
+                                loading="lazy"/>
                         </div>
-                    </div>
-                </a>
-
-                <a className="group flex flex-col focus:outline-none" href="#">
-                    <div className="aspect-w-16 aspect-h-12 overflow-hidden bg-gray-100 rounded-2xl dark:bg-neutral-800">
-                        <Image
-                            className="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out object-cover rounded-2xl"
-                            src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1365-Edit.JPG?raw=true"
-                            alt="Activity Image"
-                            width={540}
-                            height={375}
-                        />
-                    </div>
-
-                    <div className="pt-4">
-                        <h3 className="relative inline-block font-medium-geist text-lg text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-green-800 before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-100">
-                            Pupil Development
-                        </h3>
-                        <p className="mt-1 text-green-800 dark:text-neutral-400">
-                            Comprehensive programs for student growth and achievement
-                        </p>
-
-                        <div className="mt-3 flex flex-wrap gap-2">
-                            <span className="py-1.5 px-3 text-green-800 border border-green-800 text-xs sm:text-sm rounded-xl">
-                                Development
-                            </span>
-                            <span className="py-1.5 px-3 text-green-800 border border-green-800 text-xs sm:text-sm rounded-xl">
-                                Achievement
-                            </span>
+                        <div className="grow">
+                            <div className="p-4 flex flex-col h-full sm:p-6">
+                                <div className="mb-3">
+                                    <p className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
+                                        Donation
+                                    </p>
+                                </div>
+                                <h3 className="text-lg sm:text-2xl font-semibold-geist text-gray-800 group-hover:text-blue-600 group-focus:text-blue-600">
+                                    Exercise Books, Writing Materials, etc.
+                                </h3>
+                                <p className="mt-2 text-gray-600">
+                                    Empowering Education through learning and writing.
+                                </p>
+                                <div className="mt-5 sm:mt-auto">
+                                    <div className="flex items-center">
+                                        <div className="shrink-0">
+                                            <Image className="size-[46px] rounded-full" src="https://www.risingrootsfoundation.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_rising_roots.35926510.jpg&w=828&q=75" alt="Avatar"
+                                                width={50}
+                                                height={50}
+                                                loading="lazy"/>
+                                        </div>
+                                        <div className="ms-2.5 sm:ms-4">
+                                            <h4 className="font-semibold-geist text-gray-800">
+                                                Rising Roots Foundation
+                                            </h4>
+                                            <p className="text-xs text-gray-500">
+                                                Sep 2024
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
 
-
-            {/* Counter Section */}
             <ItemCountDisplay className="animate__animated animate__fadeInUp" />
-
         </div>
     );
 }

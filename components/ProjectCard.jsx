@@ -9,10 +9,8 @@ const ProjectCard = ({ title, description, image, blurDataURL }) => (
             src={image}
             alt={title}
             fill
-            placeholder="blur" // Optionally add placeholder while loading
-            blurDataURL='/images/blur.jpg' // Include the blurDataURL for the blur effect
             onError={(e) => {
-                e.currentTarget.src = '/images/rrf-hero-1.jpeg'; // Fallback image
+                e.currentTarget.src = '/images/blur.jpg'; // Fallback image
             }}
         />
         <figcaption className="text-center mt-2">
