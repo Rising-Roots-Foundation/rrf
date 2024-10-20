@@ -4,6 +4,10 @@ import ProjectCard from '@/components/ProjectCard';
 import React, { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BsFacebook } from "react-icons/bs";
+import { AiFillInstagram } from "react-icons/ai";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaYoutube } from "react-icons/fa";
 
 function EventsPage() {
     const Events = [
@@ -29,7 +33,6 @@ function EventsPage() {
         },
     ];
 
-
     useEffect(() => {
         // Function to toggle dropdown menu
         const toggleDropdown = function () {
@@ -48,7 +51,7 @@ function EventsPage() {
 
         // Get the title text from the <h2> element
         const titleElement = document.querySelector('h2');
-        const title = titleElement ? titleElement.textContent : 'Event'; // Fallback title
+        const title = titleElement ? titleElement.textContent : 'Empowering Education: How 100 Donations Transformed 2,000+ Lives with Rising Roots Foundation'; // Fallback title
 
         // Set up social share links using the title
         const currentPageUrl = window.location.href;
@@ -61,10 +64,17 @@ function EventsPage() {
         document.getElementById('facebook-share').setAttribute('href', facebookShareLink);
         document.getElementById('linkedin-share').setAttribute('href', linkedinShareLink);
 
+        // Set document title based on the <h2> title
+        document.title = title;
+
+        // Change the page URL
+        const newUrl = `${window.location.origin}${window.location.pathname}?event=${encodeURIComponent(title)}`;
+        window.history.replaceState({}, '', newUrl);
+
         // Handle the copy link button
         const copyLinkHandler = function (e) {
             e.preventDefault();
-            navigator.clipboard.writeText(currentPageUrl).then(() => {
+            navigator.clipboard.writeText(newUrl).then(() => {
                 toast.success('Share URL copied to clipboard!', {
                     position: "top-center",
                     autoClose: 5000,
@@ -93,7 +103,7 @@ function EventsPage() {
         return (
             <section>
                 {/* Page Banner */}
-                <PageBanner title={"Events"} />
+                <PageBanner title={"Nurturing Education & Empowering Communities"} className="text-xs" />
                 <ToastContainer />
 
                 <div className="max-w-[85rem] px-4 sm:px-6 lg:px-8 md:ml-20 lg:ml-40 md:mr-20 lg:mr-40 font-geist text-l">
@@ -101,17 +111,17 @@ function EventsPage() {
                         <div className="lg:col-span-2">
                             <div className="py-8 lg:pe-8">
                                 <div className="space-y-5 lg:space-y-8">
-                                    <a className="inline-flex items-center gap-x-1.5 text-sm text-green-800 decoration-2 hover:underline focus:outline-none focus:underline" href="#">
+                                    <a className="inline-flex items-center gap-x-1.5 text-sm text-green-800 decoration-2 hover:underline focus:outline-none hover:underline-offset-2" href="#">
                                         <svg className="shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="m15 18-6-6 6-6" />
                                         </svg>
-                                        Events
+                                        Empowering Education
                                     </a>
 
-                                    <h2 className="text-2xl font-semibold-geist lg:text-4xl">Nurturing Education & Empowering Communities</h2>
+                                    <h2 className="text-2xl font-semibold-geist lg:text-3xl">How 100 Donations Transformed 2,000+ Lives with Rising Roots Foundation</h2>
 
                                     <div className="flex items-center gap-x-5">
-                                        <a className="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-xl text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200" href="/donate">
+                                        <a className="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-xl text-xs sm:text-sm bg-green-800 text-white hover:text-green-800 hover:bg-green-50 focus:outline-none focus:bg-green-50" href="/donate">
                                             Donate
                                         </a>
                                         <p className="text-xs sm:text-sm text-gray-800">September 2024</p>
@@ -295,15 +305,30 @@ function EventsPage() {
 
                                 <div className="bg-green-800 rounded-lg p-4 shadow-sm">
                                     <h3 className="text-lg text-white font-semibold-geist uppercase mb-4">Connect with us</h3>
-                                    <ul className="space-y-3">
+                                    <ul className="space-y-3 text-sm">
                                         <li>
-                                            <a className="block py-2 text-white hover:underline hover:underline-offset-2" href="#">Facebook</a>
+                                            <a className="flex items-center gap-2 py-2 text-white hover:underline hover:underline-offset-2" href="https://www.facebook.com/RRootsFoundation?mibextid=LQQJ4d">
+                                                <BsFacebook />
+                                                Facebook @RRootsFoundation
+                                            </a>
                                         </li>
                                         <li>
-                                            <a className="block py-2 text-white hover:underline hover:underline-offset-2" href="#">Twitter</a>
+                                            <a className="flex items-center gap-2 py-2 text-white hover:underline hover:underline-offset-2" href="https://www.instagram.com/rrootsfoundation/profilecard/?igsh=aGp6Y3Mxcml3eHMw">
+                                                <AiFillInstagram />
+                                                Instagram @rrootsfoundation
+                                            </a>
                                         </li>
                                         <li>
-                                            <a className="block py-2 text-white hover:underline hover:underline-offset-2" href="#">Instagram</a>
+                                            <a className="flex items-center gap-2 py-2 text-white hover:underline hover:underline-offset-2" href="#">
+                                                <FaSquareXTwitter />
+                                                X (Twitter) @rrootsfoundation
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="flex items-center gap-2 py-2 text-white hover:underline hover:underline-offset-2" href="#">
+                                                <FaYoutube />
+                                                YouTube @rrootsfoundation
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
