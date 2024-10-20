@@ -106,7 +106,7 @@ function EventsPage() {
                 <PageBanner title={"Nurturing Education & Empowering Communities"} className="text-xs" />
                 <ToastContainer />
 
-                <div className="max-w-[85rem] px-4 sm:px-6 lg:px-8 md:ml-20 lg:ml-40 md:mr-20 lg:mr-40 font-geist text-l">
+                <div className="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-5 sm:mx-10 md:ml-20 lg:ml-40 md:mr-20 lg:mr-40 font-geist text-l">
                     <div className="grid lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-6">
                         <div className="lg:col-span-2">
                             <div className="py-8 lg:pe-8">
@@ -118,7 +118,7 @@ function EventsPage() {
                                         Empowering Education
                                     </a>
 
-                                    <h2 className="text-2xl font-semibold-geist lg:text-3xl">How 100 Donations Transformed 2,000+ Lives with Rising Roots Foundation</h2>
+                                    <h2 className="text-2xl font-semibold-geist lg:text-3xl text-pretty">How 100 Donations Transformed 2,000+ Lives with Rising Roots Foundation</h2>
 
                                     <div className="flex items-center gap-x-5">
                                         <a className="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-xl text-xs sm:text-sm bg-green-800 text-white hover:text-green-800 hover:bg-green-50 focus:outline-none focus:bg-green-50" href="/donate">
