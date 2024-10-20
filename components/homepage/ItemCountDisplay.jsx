@@ -48,7 +48,7 @@ const ItemCountDisplay = () => {
     return (
         <>
             <div className="w-2/3 sm:w-1/2 lg:w-1/3 mx-auto text-center mb-6">
-                <h2 className="mt-10 mb-5 text-black font-medium-geist text-xl">
+                <h2 className="mt-10 mb-5 text-black font-medium-geist text-2xl">
                     Join our community for donating and be a part of a positive change in the world.
                 </h2>
             </div>

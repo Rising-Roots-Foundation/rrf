@@ -14,10 +14,10 @@ function Fundraiser() {
                     </a>
                 </div>
             </div>
-
+0
             <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                 <div className="grid lg:grid-cols-2 gap-6">
-                    <a className="group sm:flex rounded-xl focus:outline-none" href="/events">
+                    <a className="group sm:flex rounded-xl focus:outline-none bg-green-50" href="/events">
                         <div className="shrink-0 relative rounded-xl overflow-hidden h-[200px] sm:w-[250px] sm:h-[350px] w-full">
                             <Image className="size-full absolute top-0 start-0 object-cover" src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1779-Edit.JPG?raw=true" alt="Event 01"
                                 width={560}
@@ -27,7 +27,7 @@ function Fundraiser() {
                         <div className="grow">
                             <div className="p-4 flex flex-col h-full sm:p-6">
                                 <div className="mb-3">
-                                    <p className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
+                                    <p className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs font-medium-geist bg-green-800 text-white">
                                         Donation
                                     </p>
                                 </div>
@@ -46,7 +46,7 @@ function Fundraiser() {
                                                 loading="lazy"/>
                                         </div>
                                         <div className="ms-2.5 sm:ms-4">
-                                            <h4 className="font-semibold-geist text-gray-800">
+                                            <h4 className="font-semibold-geist text-gray-800 text-sm">
                                                 Rising Roots Foundation
                                             </h4>
                                             <p className="text-xs text-gray-500">
@@ -59,7 +59,7 @@ function Fundraiser() {
                         </div>
                     </a>
 
-                    <a className="group sm:flex rounded-xl focus:outline-none" href="/events">
+                    <a className="group sm:flex rounded-xl focus:outline-none bg-green-50" href="/events">
                         <div className="shrink-0 relative rounded-xl overflow-hidden h-[200px] sm:w-[250px] sm:h-[350px] w-full">
                             <Image className="size-full absolute top-0 start-0 object-cover" src="https://github.com/Rising-Roots-Foundation/rrf-media/blob/main/gallery/IMG_1847-Edit.JPG?raw=true" alt="Blog Image"
                                 width={560}
@@ -69,7 +69,7 @@ function Fundraiser() {
                         <div className="grow">
                             <div className="p-4 flex flex-col h-full sm:p-6">
                                 <div className="mb-3">
-                                    <p className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
+                                    <p className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs font-medium-geist bg-green-800 text-white">
                                         Donation
                                     </p>
                                 </div>
@@ -88,7 +88,7 @@ function Fundraiser() {
                                                 loading="lazy"/>
                                         </div>
                                         <div className="ms-2.5 sm:ms-4">
-                                            <h4 className="font-semibold-geist text-gray-800">
+                                            <h4 className="font-semibold-geist text-gray-800 text-sm">
                                                 Rising Roots Foundation
                                             </h4>
                                             <p className="text-xs text-gray-500">
