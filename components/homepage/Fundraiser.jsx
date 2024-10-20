@@ -1,33 +1,12 @@
 // 'use client';
 import React from 'react';
-import CountUp from 'react-countup';
 import { FiArrowUpRight } from "react-icons/fi";
 import { useInView } from 'react-intersection-observer';
-import Link from 'next/link';
-import BrushOutlinedIcon from '@mui/icons-material/BrushOutlined';
-import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined';
-import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
-import WorkOutlinedIcon from '@mui/icons-material/WorkOutlined';
-import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
-import DesktopWindowsOutlinedIcon from '@mui/icons-material/DesktopWindowsOutlined';
-import LocalHospitalOutlinedIcon from '@mui/icons-material/LocalHospitalOutlined';
-import BookOutlinedIcon from '@/components/BookOutlinedIcon';
-import BackpackOutlinedIcon from '@mui/icons-material/BackpackOutlined';
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
-import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
-import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
-import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import SlippersIcon from "@/components/SlippersIcon";
 import ItemCountDisplay from "@/components/homepage/ItemCountDisplay";
 
 import Image from 'next/image';
 
 function Fundraiser() {
-    // Intersection Observer for the section
-    const [ref, inView] = useInView({
-        triggerOnce: true, // Trigger only once when in view
-        threshold: 0.3,    // Adjust this to control when the counter starts (0.3 means when 30% of the section is in view)
-    });
 
     return (
         <div className="max-w-8xl mx-auto py-10 px-5 md:px-0 mt-10 md:ml-20 lg:ml-20 md:mr-20 lg:mr-20">
