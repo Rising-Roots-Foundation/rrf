@@ -191,3 +191,46 @@ body {
 		top: 60px;
 	}
 }
+
+
+.icon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the icons */
+    position: relative;
+}
+
+.icon-item {
+    width: 150px; /* Set a fixed width */
+    margin: 20px; /* Add margin for spacing */
+    text-align: center;
+    position: relative;
+    transform: rotate(calc(10deg * (random() - 0.5))); /* Random rotation */
+    animation: float 5s ease-in-out infinite; /* Float animation */
+}
+
+.icon {
+    font-size: 48px; /* Adjust the size of icons as needed */
+    margin-bottom: 3px; /* Space between icon and text */
+}
+
+/* Keyframes for floating effect */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Counter items */
+.counter-items-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.counter-item {
+    margin: 0 20px;
+}
