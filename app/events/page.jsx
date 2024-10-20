@@ -121,17 +121,6 @@ function EventsPage() {
                                         In a world where education is the key to unlocking potential, the Rising Roots Foundation stands as a beacon of hope, fostering positive change through the power of community and generosity. Our mission is simple yet profound: to provide essential educational resources to those who need them most, creating a ripple effect of empowerment that touches lives and transforms communities.
                                     </p>
 
-                                    <div className="text-center">
-                                        <div className="grid lg:grid-cols-2 gap-3">
-                                            {Events.map((project, index) => (
-                                                <ProjectCard key={index} {...project} />
-                                            ))}
-                                        </div>
-                                        <span className="mt-3 block text-sm text-center text-gray-500 italic">
-                                            Photo Credit: Rising Roots Foundation
-                                        </span>
-                                    </div>
-
                                     <h3 className="text-2xl font-medium-geist">Our Impact: Numbers That Tell a Story</h3>
                                     <ul className="p-4 border-l-4 list-disc list-outside space-y-5 ps-5 text-l text-gray-800 border-green-800 bg-green-50 rounded-md">
                                         <li><strong>22 Desktop Computers and 2 Printers:</strong> Bridging the digital divide and opening doors to technological literacy.</li>
@@ -146,6 +135,17 @@ function EventsPage() {
                                     <p className="text-l text-gray-800">
                                         Our efforts have directly impacted over 2,000 pupils, bringing smiles to their faces and hope to their hearts. But the true measure of our success lies in the long-term effects of education on these young lives and their communities.
                                     </p>
+
+                                    <div className="text-center">
+                                        <div className="grid lg:grid-cols-2 gap-3">
+                                            {Events.map((project, index) => (
+                                                <ProjectCard key={index} {...project} />
+                                            ))}
+                                        </div>
+                                        <span className="mt-3 block text-sm text-center text-gray-500 italic">
+                                            Photo Credit: Rising Roots Foundation
+                                        </span>
+                                    </div>
 
                                     <h3 className="text-xl font-medium-geist">The Power of 100 Donations</h3>
                                     <p className="text-l text-gray-800">
