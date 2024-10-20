@@ -2,7 +2,6 @@
 import PageBanner from '@/components/PageBanner';
 import ProjectCard from '@/components/ProjectCard';
 import React, { useEffect } from 'react';
-import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
