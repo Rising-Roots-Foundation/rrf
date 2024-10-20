@@ -1,5 +1,6 @@
 import React from 'react';
 import CountUp from 'react-countup';
+import { motion } from 'framer-motion';
 import "@/app/globals.css";
 import PrintRoundedIcon from '@mui/icons-material/PrintRounded';
 import DesktopWindowsRoundedIcon from '@mui/icons-material/DesktopWindowsRounded';
@@ -34,6 +35,16 @@ const ItemCountDisplay = () => {
         { label: 'Educational Sponsorships', count: 2, icon: <SupportRoundedIcon /> },
     ];
 
+    const cardVariants = {
+        hidden: { opacity: 0, scale: 0.8 },
+        visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+    };
+
+    const iconVariants = {
+        hidden: { rotate: -90 },
+        visible: { rotate: 0, transition: { type: 'spring', stiffness: 50 } }
+    };
+
     return (
         <>
             <div className="w-2/3 sm:w-1/2 lg:w-1/3 mx-auto text-center mb-6">
@@ -42,17 +53,25 @@ const ItemCountDisplay = () => {
                 </h2>
             </div>
 
-            <div className="icon-container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4"> {/* Ensuring two columns on mobile */}
+            {/* Adjusted grid layout with animations */}
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:mr-10 lg:ml-10">
                 {items.map((item, index) => (
-                    <div key={index} className="icon-item border rounded-3xl text-center font-medium-geist p-4 flex flex-col items-center">
-                        <div className="icon text-green-800 flex justify-center">
+                    <motion.div
+                        key={index}
+                        variants={cardVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className={`border rounded-3xl text-center font-medium-geist p-4 md:mx-5 lg:mx-10 mt-5 flex flex-col items-center
+                            ${index === items.length - 1 && items.length % 3 === 1 ? 'md:col-span-3' : ''}`}
+                    >
+                        <motion.div className="icon text-green-800 flex justify-center" variants={iconVariants}>
                             {item.icon}
-                        </div>
+                        </motion.div>
                         <p className="text-green-950 text-xl font-medium-geist">
                             <CountUp start={0} end={item.count} duration={2.5} formattingFn={formatCount} />
                         </p>
                         <h3 className="text-l font-medium-geist mt-2 mb-3 mx-1">{item.label}</h3>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
 
