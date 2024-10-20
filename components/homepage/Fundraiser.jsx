@@ -1,7 +1,6 @@
 // 'use client';
 import React from 'react';
 import { FiArrowUpRight } from "react-icons/fi";
-import { useInView } from 'react-intersection-observer';
 import ItemCountDisplay from "@/components/homepage/ItemCountDisplay";
 
 import Image from 'next/image';
