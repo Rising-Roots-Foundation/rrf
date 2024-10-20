@@ -121,7 +121,6 @@ function Footer() {
                     <div className="inline-flex gap-3 md:gap-10 text-white text-sm md:text-normal">
                         <p>&nbsp;&copy; {currentYear} Rising Roots Foundation</p>
                         {/* <p><a href="#">Cookie Policy</a></p> */}
-                        <p className="items-center">Designed by <a href="https://www.aibsmart.com"><span className="font-medium-geist hover:underline hover:underline-offset-2">aib.smart</span></a></p>
                     </div>
 
                     <div className="inline-flex gap-2 md:gap-7 text-white">
@@ -137,7 +136,11 @@ function Footer() {
                 {/* Footer Description */}
                 <div className="text-white my-5 text-sm md:text-base italic md:ml-20 lg:ml-40 md:mr-20 lg:mr-40">
                     "Every contribution you make plants a seed of hope, nurturing dreams and building futures. Together, we can transform lives, one donation at a time, and create a world where every child has the opportunity to grow, learn, and succeed. Join us in making a lasting difference."
+                    <div className="flex items-center justify-center mt-5">
+                        <p>Designed by <a href="https://www.aibsmart.com"><span className="font-medium-geist hover:underline hover:underline-offset-2">aib.smart</span></a></p>
+                    </div>
                 </div>
+
             </div>
         </footer>
     );

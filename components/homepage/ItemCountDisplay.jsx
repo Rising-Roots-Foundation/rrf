@@ -54,7 +54,7 @@ const ItemCountDisplay = () => {
             </div>
 
             {/* Adjusted grid layout with animations */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:mr-10 lg:ml-10">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:mr-10 lg:ml-10 animate__animated animate__fadeInUp">
                 {items.map((item, index) => (
                     <motion.div
                         key={index}
