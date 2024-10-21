@@ -2,15 +2,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 import { FaRegSmile, FaHeart } from "react-icons/fa";
-import { IoPlay } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 import hero1 from "@/app/images/hero1.jpg";
 import hero2 from "@/app/images/hero2.jpg";
 import hero3 from "@/app/images/hero3.png";
 import "animate.css";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
 import { motion, AnimatePresence } from "framer-motion";
 import "@mux/mux-player";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -92,10 +89,6 @@ function Hero() {
         }, 7000);
         return () => clearInterval(interval);
     }, []);
-
-    // useEffect(() => {
-    //     AOS.init();
-    // }, []);
 
     const openModal = () => setModalOpen(true);
     // const closeModal = () => setModalOpen(false);
