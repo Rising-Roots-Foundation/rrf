@@ -138,7 +138,7 @@ function Hero() {
                 <div className="max-w-8xl container mx-auto relative text-white z-10">
                     <div className="flex justify-center">
                         <div className="text-center lg:w-1/2">
-                            <div className="sm:rounded md:rounded-3xl lg:rounded-3xl bg-green-900/30 py-5 px-3 sm:mx-5 md:mx-5">
+                            <div className="sm:rounded md:rounded-3xl lg:rounded-3xl bg-green-900/75 py-5 px-3 sm:mx-5 md:mx-5">
                                 <h2 className="text-3xl sm:text-3xl lg:text-4xl font-semibold-geist text-pretty uppercase">
                                     {images[currentImage].name}
                                 </h2>
