@@ -1,11 +1,11 @@
-'use client';
-import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Link from 'next/link';
+"use client";
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 
 function ComingSoon() {
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState("");
     const [isLoading, setIsLoading] = useState(false); // New state to track loading
 
     const handleSubmit = async (e) => {
@@ -13,10 +13,10 @@ function ComingSoon() {
         setIsLoading(true); // Start loading spinner
 
         try {
-            const response = await fetch('/api/waitlist', {
-                method: 'POST',
+            const response = await fetch("/api/waitlist", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ email }), // Send the email to the server
             });
@@ -32,19 +32,43 @@ function ComingSoon() {
                     progress: undefined,
                     theme: "light",
                 });
-                setEmail(''); // Clear the input field
+                setEmail(""); // Clear the input field
             } else {
                 const errorData = await response.json();
-                toast.error(`Subscription failed: ${errorData.error || 'Unknown error'}`, {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
+                console.log("Error response:", errorData); // Log the full error response for debugging
+
+                const errorMessage = errorData.message || "Unknown error";
+
+                // Check for the specific error code or message
+                if (
+                    errorData.code === "duplicate_parameter" &&
+                    errorMessage.includes("Contact already exist")
+                ) {
+                    toast.error(
+                        "Email already exists, please enter another email address.",
+                        {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                        },
+                    );
+                } else {
+                    toast.error(`Subscription failed: ${errorMessage}`, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                }
             }
         } catch (error) {
             toast.error(`Network error: ${error.message}`, {
@@ -55,7 +79,7 @@ function ComingSoon() {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                theme: "light"
+                theme: "light",
             });
         } finally {
             setIsLoading(false); // Stop loading spinner
@@ -72,7 +96,10 @@ function ComingSoon() {
             </p>
 
             {/* Waitlist Form */}
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 mb-10">
+            <form
+                onSubmit={handleSubmit}
+                className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 mb-10"
+            >
                 <input
                     type="email"
                     value={email}
@@ -87,12 +114,28 @@ function ComingSoon() {
                     disabled={isLoading} // Disable the button while loading
                 >
                     {isLoading ? (
-                        <svg className="animate-spin h-5 w-5 text-white mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                        <svg
+                            className="animate-spin h-5 w-5 text-white mr-2"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                        >
+                            <circle
+                                className="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="4"
+                            ></circle>
+                            <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8v8H4z"
+                            ></path>
                         </svg>
                     ) : (
-                        'Notify Me'
+                        "Notify Me"
                     )}
                 </button>
             </form>

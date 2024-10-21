@@ -1,58 +1,108 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
     const { email } = await req.json(); // Collect email from request body
 
+    // Generate a unique FIRSTNAME using the current date and time
+    const now = new Date();
+    const timestamp = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, "0")}${now.getDate().toString().padStart(2, "0")}_${now.getHours().toString().padStart(2, "0")}${now.getMinutes().toString().padStart(2, "0")}${now.getSeconds().toString().padStart(2, "0")}`;
+    const firstName = `Newsletter_${timestamp}`;
+
     // Prepare the email template payload for Brevo API
     const emailData = {
         sender: {
-            email: 'newsletter@risingrootsfoundation.org', // Set your Brevo sender email
-            name: 'Newsletter - Rising Roots Foundation',   // Set sender name
+            email: "newsletter@risingrootsfoundation.org", // Set your Brevo sender email
+            name: "Newsletter - Rising Roots Foundation", // Set sender name
         },
-        subject: 'Newsletter Subscription Confirmed!', // Set subject
+        subject: "Newsletter Subscription Confirmed!", // Set subject
         templateId: 2, // Your predefined template ID
         params: {
-            greeting: 'Newsletter Subscription Confirmed!', // Greeting
+            greeting: "Newsletter Subscription Confirmed!", // Greeting
         },
         messageVersions: [
             {
                 to: [
                     {
-                        email: email,   // The email collected from the subscription form
-                        name: 'User',   // Placeholder name, can be left static
+                        email: email, // The email collected from the subscription form
+                        name: "User", // Placeholder name, can be left static
                     },
                 ],
                 params: {
-                    greeting: 'Newsletter Subscription Confirmed!', // Greeting
+                    greeting: "Newsletter Subscription Confirmed!", // Greeting
                 },
-                subject: 'Newsletter Subscription Confirmed!', // Subject for the email
+                subject: "Newsletter Subscription Confirmed!", // Subject for the email
             },
         ],
     };
 
-    try {
-        // Send the email using Brevo API
-        const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-            method: 'POST',
-            headers: {
-                'accept': 'application/json',
-                'api-key': process.env.BREVO_API_KEY, // Use your Brevo API key stored in environment variable
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(emailData),
-        });
+    // Prepare the contact creation payload for Brevo API
+    const contactData = {
+        attributes: {
+            FIRSTNAME: firstName, // Set FIRSTNAME with incrementing timestamp
+        },
+        updateEnabled: false, // Avoid updating existing contact
+        email: email, // Email collected from the form
+        listIds: [4], // Add user to list ID 5
+    };
 
-        if (response.ok) {
-            const result = await response.json();
-            console.log('Email sent successfully:', result);
-            return NextResponse.json({ message: 'Subscription successful!' }, { status: 200 });
+    try {
+        // Create the contact in Brevo
+        const contactResponse = await fetch(
+            "https://api.brevo.com/v3/contacts",
+            {
+                method: "POST",
+                headers: {
+                    accept: "application/json",
+                    "api-key": process.env.BREVO_API_KEY, // Use your Brevo API key stored in environment variable
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(contactData),
+            },
+        );
+
+        if (!contactResponse.ok) {
+            const contactError = await contactResponse.json();
+            console.error("Error creating contact:", contactError);
+            return NextResponse.json(
+                { error: "Error creating contact." },
+                { status: 500 },
+            );
+        }
+
+        // If contact creation is successful, proceed to send the newsletter confirmation email
+        const emailResponse = await fetch(
+            "https://api.brevo.com/v3/smtp/email",
+            {
+                method: "POST",
+                headers: {
+                    accept: "application/json",
+                    "api-key": process.env.BREVO_API_KEY, // Use your Brevo API key stored in environment variable
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(emailData),
+            },
+        );
+
+        if (emailResponse.ok) {
+            const result = await emailResponse.json();
+            console.log("Email sent successfully:", result);
+            return NextResponse.json(
+                { message: "Subscription successful!" },
+                { status: 200 },
+            );
         } else {
-            const error = await response.json();
-            console.error('Error sending email:', error);
-            return NextResponse.json({ error: 'Error sending email.' }, { status: 500 });
+            const emailError = await emailResponse.json();
+            console.error("Error sending email:", emailError);
+            return NextResponse.json(
+                { error: "Error sending email." },
+                { status: 500 },
+            );
         }
     } catch (error) {
-        console.error('Error in email process:', error);
-        return NextResponse.json({ error: 'Error processing subscription.' }, { status: 500 });
+        console.error("Error in email/contact process:", error);
+        return NextResponse.json(
+            { error: "Error processing subscription." },
+            { status: 500 },
+        );
     }
 }
