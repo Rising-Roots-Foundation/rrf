@@ -264,6 +264,7 @@ function Hero() {
                                     is an increase of 6 million from 2021.
                                 </p>
                             </div>
+                            <Link href="/donate">
                             <button
                                 className="font-medium-geist mt-4 w-full flex items-center justify-between px-4 py-3 bg-green-700 text-green-800 rounded-xl uppercase"
                                 onClick={openModal}
@@ -275,6 +276,7 @@ function Hero() {
                                     <FiArrowUpRight />
                                 </div>
                             </button>
+                            </Link>
                         </div>
                         <div className="bg-black text-white p-4 rounded-3xl flex items-center sm:justify-center gap-5">
                             <div>
