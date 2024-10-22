@@ -58,7 +58,7 @@ function ComingSoon() {
                         },
                     );
                 } else {
-                    toast.error(`Subscription failed: ${errorMessage}`, {
+                    toast.error(`Oops something unexpected happened!`, {
                         position: "top-center",
                         autoClose: 5000,
                         hideProgressBar: false,
