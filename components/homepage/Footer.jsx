@@ -54,7 +54,6 @@ function Footer() {
             });
 
             if (response.ok) {
-                const data = await response.json();
                 setEmail(""); // Clear the email input after successful subscription
                 setModalOpen(true); // Show success modal
                 setModalContent({
@@ -79,7 +78,7 @@ function Footer() {
                     });
                 }
             }
-        } catch (error) {
+        } catch {
             setModalOpen(true); // Show error modal for network/server error
             setModalContent({
                 title: "Error",

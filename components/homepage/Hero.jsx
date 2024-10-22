@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 import { FaRegSmile, FaHeart } from "react-icons/fa";
 import Image from "next/image";
@@ -53,7 +53,7 @@ function Hero() {
     };
 
     // Handle scroll event and close the modal if scrolled past half
-    const handleScrollModal = () => {
+    const handleScrollModal = useCallback(() => {
         const scrollPosition = window.scrollY;
         const windowHeight = window.innerHeight;
 
@@ -61,7 +61,7 @@ function Hero() {
         if (scrollPosition > windowHeight / 2) {
             closeVideoModal();
         }
-    };
+    }, []);
 
     useEffect(() => {
         if (isOpen) {
@@ -72,7 +72,7 @@ function Hero() {
         return () => {
             window.removeEventListener("scroll", handleScrollModal);
         };
-    }, [isOpen]);
+    }, [isOpen, handleScrollModal]);
 
     const handleVideoEnd = () => {
         setShowReplay(true); // Show the replay button when the video ends
@@ -89,9 +89,6 @@ function Hero() {
         }, 7000);
         return () => clearInterval(interval);
     }, []);
-
-    const openModal = () => setModalOpen(true);
-    // const closeModal = () => setModalOpen(false);
 
     const handleScroll = () => {
         if (heroSectionCardsRef.current) {
@@ -128,6 +125,8 @@ function Hero() {
                                         alt="hero"
                                         src={src.image}
                                         fill
+                                        priority
+                                        quality={85}
                                         className="object-cover w-full h-full z-10"
                                     />
                                 </motion.div>
@@ -265,17 +264,14 @@ function Hero() {
                                 </p>
                             </div>
                             <Link href="/donate">
-                            <button
-                                className="font-medium-geist mt-4 w-full flex items-center justify-between px-4 py-3 bg-green-700 text-green-800 rounded-xl uppercase"
-                                onClick={openModal}
-                            >
-                                <span className="text-[15px] text-white">
-                                    Sponsor A Child
-                                </span>
-                                <div className="w-6 h-6 bg-lime-300 rounded-full flex justify-center items-center">
-                                    <FiArrowUpRight />
-                                </div>
-                            </button>
+                                <button className="font-medium-geist mt-4 w-full flex items-center justify-between px-4 py-3 bg-green-700 text-green-800 rounded-xl uppercase">
+                                    <span className="text-[15px] text-white">
+                                        Sponsor A Child
+                                    </span>
+                                    <div className="w-6 h-6 bg-lime-300 rounded-full flex justify-center items-center">
+                                        <FiArrowUpRight />
+                                    </div>
+                                </button>
                             </Link>
                         </div>
                         <div className="bg-black text-white p-4 rounded-3xl flex items-center sm:justify-center gap-5">
