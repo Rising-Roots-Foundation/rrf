@@ -168,23 +168,24 @@ function Footer() {
 
                 {/* Footer Links and Social Icons */}
                 <div className="flex flex-wrap justify-between mt-5 gap-5 md:ml-20 lg:ml-40 md:mr-20 lg:mr-40">
-                    <div className="inline-flex gap-3 md:gap-10 text-white text-sm md:text-normal">
+                    <div className="inline-flex gap-3 md:gap-10 mt-1 text-white text-md font-medium-geist">
                         <p>
-                            &nbsp;&copy; {currentYear} Rising Roots Foundation
+                            &nbsp;&copy; {currentYear}
+                            <Link href="/"> Rising Roots Foundation</Link>
                         </p>
                     </div>
-                    <div className="inline-flex gap-2 md:gap-7 text-white">
+                    <div className="inline-flex gap-2 md:gap-7 text-white sm:mr-5">
                         <a
                             href="https://www.instagram.com/rrootsfoundation/profilecard/?igsh=aGp6Y3Mxcml3eHMw"
                             className="text-white hover:underline hover:underline-offset-2"
                         >
-                            <SlSocialInstagram />
+                            <SlSocialInstagram className="text-2xl" />
                         </a>
                         <a
                             href="https://www.facebook.com/RRootsFoundation?mibextid=LQQJ4d"
                             className="text-white transition hover:underline hover:underline-offset-2 duration-300"
                         >
-                            <FaFacebook />
+                            <FaFacebook className="text-2xl" />
                         </a>
                     </div>
                 </div>

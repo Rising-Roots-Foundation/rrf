@@ -1,7 +1,7 @@
-'use client';
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import logo from '@/app/images/logo.png';
+import logo from "@/app/images/logo.png";
 import Link from "next/link";
 
 // Navigation links
@@ -10,7 +10,7 @@ const links = [
     { href: "/events", label: "Events" },
     { href: "/partners", label: "Partners" },
     { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" }
+    { href: "/contact", label: "Contact" },
 ];
 
 const Navbar = () => {
@@ -27,7 +27,11 @@ const Navbar = () => {
                     {/* Logo */}
                     <div className="flex items-center">
                         <a href="/">
-                            <Image src={logo} className="w-28 ml-5" alt="Logo" />
+                            <Image
+                                src={logo}
+                                className="w-28 ml-5"
+                                alt="Logo"
+                            />
                         </a>
                     </div>
 
@@ -37,7 +41,7 @@ const Navbar = () => {
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className="text-white hover:underline hover:font-semibold-geist px-3 py-2 text-sm font-medium-geist uppercase"
+                                className="text-white hover:underline hover:font-semibold-geist px-3 py-2 text-sm font-medium-geist uppercase hover:underline-offset-4 hover:transition-all hover:duration-300 hover:ease-in-out"
                             >
                                 {link.label}
                             </a>
@@ -47,25 +51,48 @@ const Navbar = () => {
                     {/* Desktop Donate Button */}
                     <div className="hidden md:flex">
                         <Link href="/donate">
-                        <button
-                                className="bg-green-800 text-white ld:px-5 lg:py-2 px-3 py-2 lg:text-l rounded-lg uppercase text-sm mr-5"
-                        >
-                            Donate now
+                            <button className="bg-green-800 text-white ld:px-5 lg:py-2 px-3 py-2 lg:text-l rounded-lg uppercase text-sm mr-5">
+                                Donate now
                             </button>
                         </Link>
                     </div>
 
                     {/* Mobile Menu Toggle Button */}
                     <div className="-mr-2 flex md:hidden">
-                        <button onClick={toggleMenu} className="bg-green-800 text-white p-2 rounded-md">
+                        <button
+                            onClick={toggleMenu}
+                            className="bg-green-800 text-white p-2 rounded-md"
+                        >
                             <span className="sr-only">Open main menu</span>
                             {isOpen ? (
-                                <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                <svg
+                                    className="h-6 w-6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
                                 </svg>
                             ) : (
-                                <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                                <svg
+                                    className="h-6 w-6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M4 6h16M4 12h16m-7 6h7"
+                                    />
                                 </svg>
                             )}
                         </button>
@@ -87,10 +114,8 @@ const Navbar = () => {
                             </a>
                         ))}
                         <Link href="/donate">
-                        <button
-                            className="bg-green-800 text-white px-5 py-2 rounded-full text-sm hover:bg-slate-500 uppercase"
-                        >
-                            Donate now
+                            <button className="bg-green-800 text-white px-5 py-2 rounded-full text-sm hover:bg-slate-500 uppercase">
+                                Donate now
                             </button>
                         </Link>
                     </div>
