@@ -91,7 +91,7 @@ function Footer() {
 
     return (
         <footer className="md:p-0 bg-green-800">
-            <div className="max-w-8xl container mx-auto p-5">
+            <div className="max-w-8xl container mx-auto py-5">
                 {/* Newsletter Subscription Section */}
                 <div className="bg-white p-6 rounded-2xl mb-8 mt-10 md:ml-20 lg:ml-40 md:mr-20 lg:mr-40">
                     <h2 className="text-green-800 text-xl font-semibold-geist mb-4">
@@ -168,13 +168,13 @@ function Footer() {
 
                 {/* Footer Links and Social Icons */}
                 <div className="flex flex-wrap justify-between mt-5 gap-5 md:ml-20 lg:ml-40 md:mr-20 lg:mr-40">
-                    <div className="inline-flex gap-3 md:gap-10 mt-1 text-white text-md font-medium-geist">
+                    <div className="inline-flex gap-3 md:gap-10 mt-1 text-white text-sm md:font-sm sm:font-xs font-medium-geist">
                         <p>
                             &nbsp;&copy; {currentYear}
                             <Link href="/"> Rising Roots Foundation</Link>
                         </p>
                     </div>
-                    <div className="inline-flex gap-2 md:gap-7 text-white sm:mr-5">
+                    <div className="inline-flex gap-2 md:gap-7 text-white sm:mr-3 ms:mr-3">
                         <a
                             href="https://www.instagram.com/rrootsfoundation/profilecard/?igsh=aGp6Y3Mxcml3eHMw"
                             className="text-white hover:underline hover:underline-offset-2"
