@@ -1,80 +1,101 @@
-'use client';
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import Image from 'next/image';
+"use client"
+import { useForm } from "react-hook-form"
+import Image from "next/image"
 
 const DonateForm = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
 
-    const onSubmit = (data) => {
-        console.log('Form submitted:', data);
-        handlePayPalClick(data); // Ensure handlePayPalClick is called here
-    };
+  const onSubmit = (data) => {
+    console.log("Form submitted:", data)
+    handlePayPalClick(data)
+  }
 
-    const handlePayPalClick = (data) => {
-        const { email } = data;
-        if (email) {
-            const paypalUrl = `https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=JWTF65REUU42W&fbclid=PAZXh0bgNhZW0CMTEAAabMTmbPAX0vMYOc1RgjoJqDXaJe7V6-ilm_Fh2DHe-9w90vt9UGThpeaKE_aem_qxFKR7SrMxto_YMeK8gnYw`;
-            window.open(paypalUrl, '_blank');
-        } else {
-            console.error('Email is not valid:', email);
-        }
-    };
+  const handlePayPalClick = (data) => {
+    const { email } = data
+    if (email) {
+      const paypalUrl = `https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=JWTF65REUU42W&fbclid=PAZXh0bgNhZW0CMTEAAabMTmbPAX0vMYOc1RgjoJqDXaJe7V6-ilm_Fh2DHe-9w90vt9UGThpeaKE_aem_qxFKR7SrMxto_YMeK8gnYw`
+      window.open(paypalUrl, "_blank")
+    } else {
+      console.error("Email is not valid:", email)
+    }
+  }
 
-    return (
-        <section className="font-geist text-l lg:text-lg font-medium-geist text-gray-700 mb-10 text-center ml-10 mr-10 md:ml-10 md:mr-10">
-            <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-                <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                    <h1 className="text-2xl lg:text-3xl mb-4 font-medium text-green-800 uppercase">
-                        Support Our Cause
-                    </h1>
-                    <p className="mb-8 leading-relaxed">
-                        Your contribution helps us continue our mission. Donate via PayPal below.
-                    </p>
-                    <div className="flex md:justify-start justify-center items-end">
-                        <div className="relative mr-20 lg:w-full xl:w-1/2 w-2/4">
-                            <label htmlFor="email" className="leading-7 text-sm text-green-800 uppercase">EMAIL</label>
-                            <input
-                                type="email"
-                                {...register('email', {
-                                    required: 'Email is required',
-                                    pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' },
-                                })}
-                                className="w-60 bg-gray-100 rounded-lg border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                placeholder="Enter your email"
-                            />
-                            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
-                        </div>
-                    </div>
-                    <div className="flex lg:flex-row md:flex-col my-3 justify-center">
-                        <button className="bg-indigo-800 text-white inline-flex py-3 px-5 text-sm sm:px-5 md:px-5 rounded-xl items-center hover:bg-indigo-800/90 focus:outline-none" onClick={handleSubmit(onSubmit)}>
-                            <svg className="w-6 h-6" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="paypal" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path fill="currentColor" d="M111.4 295.9c-3.5 19.2-17.4 108.7-21.5 134-.3 1.8-1 2.5-3 2.5H12.3c-7.6 0-13.1-6.6-12.1-13.9L58.8 46.6c1.5-9.6 10.1-16.9 20-16.9 152.3 0 165.1-3.7 204 11.4 60.1 23.3 65.6 79.5 44 140.3-21.5 62.6-72.5 89.5-140.1 90.3-43.4 .7-69.5-7-75.3 24.2zM357.1 152c-1.8-1.3-2.5-1.8-3 1.3-2 11.4-5.1 22.5-8.8 33.6-39.9 113.8-150.5 103.9-204.5 103.9-6.1 0-10.1 3.3-10.9 9.4-22.6 140.4-27.1 169.7-27.1 169.7-1 7.1 3.5 12.9 10.6 12.9h63.5c8.6 0 15.7-6.3 17.4-14.9 .7-5.4-1.1 6.1 14.4-91.3 4.6-22 14.3-19.7 29.3-19.7 71 0 126.4-28.8 142.9-112.3 6.5-34.8 4.6-71.4-23.8-92.6z"></path>
-                            </svg>
-                            <span className="ml-4 flex items-start flex-col leading-none">
-                                Donate via PayPal
-                            </span>
-                        </button>
-                    </div>
-                    <p className="text-sm mt-2 text-gray-500 mb-8 w-full">
-                        Your support means a lot to us. Thank you!
-                    </p>
-                </div>
-                <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                    <Image className="object-cover object-center rounded"
-                        alt="logo"
-                        src="/images/logo_rising_roots.jpg"
-                        height={500}
-                        width={500}
-                    />
-                </div>
+  return (
+    <section className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
+      <div className="container mx-auto px-6 py-16">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          {/* Content Section */}
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h1 className="text-4xl lg:text-5xl font-light text-slate-900 tracking-tight">
+                Support Our
+                <span className="block text-emerald-600 font-medium">Mission</span>
+              </h1>
+              <p className="text-lg text-slate-600 leading-relaxed max-w-md">
+                Your contribution helps us continue making a positive impact. Every donation matters.
+              </p>
             </div>
-        </section>
-    );
-};
 
-export default DonateForm;
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium text-slate-700 uppercase tracking-wide">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Please enter a valid email address",
+                    },
+                  })}
+                  className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200"
+                  placeholder="your@email.com"
+                />
+                {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>}
+              </div>
+
+              <button
+                type="submit"
+                className="group w-full sm:w-auto bg-[#0070ba] hover:bg-[#005ea6] text-white font-medium py-4 px-8 rounded-xl transition-all duration-200 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.028-.026.056-.052.08-.26 1.13-.618 2.112-1.07 2.934-.45.82-1.004 1.48-1.66 1.974a7.607 7.607 0 0 1-2.572 1.267c-.544.15-1.147.225-1.808.225h-1.937c-.524 0-.968.382-1.05.9L9.354 19.9c-.082.518.13.937.633.937h3.23c.524 0 .968-.382 1.05-.9l.429-2.72c.082-.518.526-.9 1.05-.9h.659c3.745 0 6.675-1.52 7.53-5.92.285-1.47.126-2.7-.713-3.48z" />
+                </svg>
+                <span>Donate with PayPal</span>
+              </button>
+            </form>
+
+            <p className="text-sm text-slate-500 max-w-md">
+              Your support means everything to us. Thank you for helping us make a difference.
+            </p>
+          </div>
+
+          {/* Image Section */}
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+              <Image
+                className="object-cover w-full h-[500px]"
+                alt="Rising Roots Logo"
+                src="/images/logo_rising_roots.jpg?height=500&width=500"
+                height={500}
+                width={500}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-emerald-100 rounded-full opacity-60"></div>
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-slate-100 rounded-full opacity-40"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default DonateForm
