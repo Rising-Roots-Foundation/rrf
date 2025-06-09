@@ -30,6 +30,20 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'github.com',  // Github (main domain)
             },
+            {
+                protocol: 'https',
+                hostname: 'cdn.sanity.io',  // Sanity CDN
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.sanity.io', // Sanity CDN
+                pathname: '/images/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.sanity.io', // Sanity CDN
+                pathname: '/files/**',
+            },
         ],
     },
 };

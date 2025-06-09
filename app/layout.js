@@ -1,13 +1,10 @@
-import dynamic from 'next/dynamic';
 import PrelineScript from "@/components/PrelineScript";
 import localFont from "next/font/local";
 import "./globals.css";
 import 'animate.css';
 import Footer from "@/components/homepage/Footer";
-
-
-// Dynamically import Navbar to prevent server-side rendering issues
-const Navbar = dynamic(() => import('@/components/homepage/Navbar'), { ssr: false });
+import NavbarClient from "@/components/NavbarClient";
+import ModalInit from "@/components/ModalInit"; // new
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,11 +18,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-// Set the app element for accessibility
-if (typeof window !== 'undefined') {
-  Modal.setAppElement('#modal-root'); // Ensure you have this ID in your HTML
-}
-
 export const metadata = {
   title: "Rising Roots Foundation",
   description: "Rising Roots Foundation is a non-profit platform designed to connect donors with those in need. Through Rising Roots Foundation, individuals can easily donate to various causes, helping provide essential support to vulnerable communities.",
@@ -34,15 +26,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Navbar />
+        <NavbarClient />
+        <ModalInit />
         {children}
         <Footer />
-        {/* Modal Root Element */}
         <div id="modal-root"></div>
-          </body>
-          <PrelineScript />
+        <PrelineScript />
+      </body>
     </html>
   );
 }

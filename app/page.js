@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect } from 'react';
-import Faq from '@/components/homepage/Faq';
+import Faq from '@/components/homepage/faq.tsx';
 import Fundraiser from '@/components/homepage/Fundraiser';
 import Hero from '@/components/homepage/Hero';
 // import HeroSectionCards from '@/components/homepage/HeroSectionCards';
