@@ -48,7 +48,7 @@ function Fundraiser() {
                 </h1>
                 <div>
                     <a
-                        href="/Events"
+                        href="/activities"
                         className="text-green-700 font-semibold-geist text-2xl uppercase flex justify-between gap-3"
                     >
                         See All{" "}

@@ -1,5 +1,4 @@
 "use client";
-"use client";
 import PageBanner from "@/components/PageBanner";
 import ProjectCard from "@/components/ProjectCard";
 import React, { useEffect, useState } from "react";
