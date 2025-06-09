@@ -3,7 +3,7 @@
 import PageBanner from "@/components/PageBanner";
 import ProjectCard from "@/components/ProjectCard";
 import React, { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BsFacebook } from "react-icons/bs";
 import { AiFillInstagram } from "react-icons/ai";

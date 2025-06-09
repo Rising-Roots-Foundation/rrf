@@ -1,7 +1,9 @@
 import type {StructureBuilder} from '@sanity/structure'
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
-export const structure = (S: typeof StructureBuilder) =>
+import type {StructureBuilder} from '@sanity/structure'
+
+export const structure = (S: StructureBuilder) =>
   S.list()
     .title('Blog')
     .items([
