@@ -129,7 +129,7 @@ export default function EventDetailsPage() {
         <meta name="description" content={post.description} />
       </Head>
 
-      <PageBanner title={post.title} className="text-xs" />
+      {/* <PageBanner title={post.title} className="text-xs" /> */}
 
       <div className="max-w-screen-xl px-4 md:px-8 mx-auto py-10 font-geist">
         <div className="grid lg:grid-cols-3 gap-12">
