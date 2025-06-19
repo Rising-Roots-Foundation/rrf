@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import team1 from '@/app/images/juliana.jpg';
 import team2 from '@/app/images/kofi.jpg';
