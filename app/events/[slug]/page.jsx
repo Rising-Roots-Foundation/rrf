@@ -17,7 +17,6 @@ import { BsFacebook } from "react-icons/bs";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaTwitter, FaYoutube } from "react-icons/fa";
 
-import PageBanner from "@/components/PageBanner";
 import PostShareMenu from "@/components/PostShareMenu";
 import Head from "next/head";
 

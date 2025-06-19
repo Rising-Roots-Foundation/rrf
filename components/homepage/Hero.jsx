@@ -115,12 +115,9 @@ function Hero() {
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 1 }}
-                                    className="absolute inset-0 bg-cover bg-center"
-                                    style={{
-                                        backgroundImage: `url(${src.image})`,
-                                    }}
+                                    className="absolute inset-0"
                                 >
-                                    <div className="skeleton absolute inset-0 bg-black/20 z-0"></div>
+                                    <div className="absolute inset-0 bg-black/20 z-0"></div>
                                     <Image
                                         alt="hero"
                                         src={src.image}

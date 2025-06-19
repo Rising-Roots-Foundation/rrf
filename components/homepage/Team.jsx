@@ -5,29 +5,6 @@ import team1 from '@/app/images/juliana.jpg';
 import team2 from '@/app/images/kofi.jpg';
 import team3 from '@/app/images/ami.jpg';
 
-// Custom hook to get the window size
-const useWindowSize = () => {
-    const [windowSize, setWindowSize] = useState({
-        width: undefined,
-        height: undefined,
-    });
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-        };
-
-        window.addEventListener('resize', handleResize);
-        handleResize();
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    return windowSize;
-};
 
 const teamMembers = [
     {
@@ -54,18 +31,15 @@ const teamMembers = [
 ];
 
 // Truncate Function
-const truncateBio = (bio, isExpanded, isDesktop) => {
+const truncateBio = (bio, isExpanded) => {
     const limit = 110;
-    if (isDesktop || isExpanded || bio.length <= limit) {
+    if (isExpanded || bio.length <= limit) {
         return bio;
     }
     return bio.slice(0, limit) + '...';
 };
 
 const TeamCard = ({ image, name, position, bio, isReversed, isExpanded, onToggleExpand }) => {
-    const size = useWindowSize();
-    const isDesktop = size.width > 1024;
-
     return (
         <div className={`flex items-center bg-gray-200 pt-5 rounded-3xl lg:w-4/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col ${isReversed ? 'sm:flex-row-reverse' : ''}`}>
             <div className="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 sm:ml-10 mt-10 inline-flex flex-col items-center justify-center rounded-full flex-shrink-0">
@@ -82,8 +56,8 @@ const TeamCard = ({ image, name, position, bio, isReversed, isExpanded, onToggle
             <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
                 <h2 className="text-green-800 text-lg title-font font-medium-geist mb-2 md:mt-2 lg:mt-2 sm:px-10 md:px-10 px-10 lg:px-10 uppercase">{name}</h2>
 
-                <p className="leading-relaxed text-base text-pretty sm:px-10 md:px-10 px-10">{truncateBio(bio, isExpanded, isDesktop)}</p>
-                {!isDesktop && bio.length > 120 && (
+                <p className="leading-relaxed text-base text-pretty sm:px-10 md:px-10 px-10">{truncateBio(bio, isExpanded)}</p>
+                {bio.length > 120 && (
                     <button
                         onClick={onToggleExpand}
                         className="bg-gray-300 rounded-xl md:ml-10 md:mr-10 lg:ml-10 lg:mr-10 mt-3 md:mt-10 text-green-800 inline-flex sm:px-7 md:px-7 px-7 items-center"

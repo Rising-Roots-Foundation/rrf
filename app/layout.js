@@ -21,7 +21,13 @@ const geistMono = localFont({
 export const metadata = {
   title: "Rising Roots Foundation",
   description: "Rising Roots Foundation is a non-profit platform designed to connect donors with those in need. Through Rising Roots Foundation, individuals can easily donate to various causes, helping provide essential support to vulnerable communities.",
-  keywords: "non-profit, donation, charity, support, needy, Rising Roots Foundation"
+  keywords: "non-profit, donation, charity, support, needy, Rising Roots Foundation",
+  metadataBase: new URL('https://rising-roots-foundation.vercel.app'),
+  openGraph: {
+    title: 'Rising Roots Foundation',
+    description: 'A non-profit platform designed to connect donors with those in need',
+    images: ['/images/logo_rising_roots.jpg'],
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -33,7 +33,6 @@ function Fundraiser() {
             }`;
 
             const data = await client.fetch(query);
-            console.log(data);
             setActivities(data);
         }
 
