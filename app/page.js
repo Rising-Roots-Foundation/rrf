@@ -27,12 +27,19 @@ function Page() {
         <main>
             <div className="h-auto overflow-hidden">
                 <Hero />
-                {/* <HeroSectionCards targetRef={heroSectionCardsRef} /> */}
             </div>
-            <Fundraiser />
-            <Stripes />
-            <Team />
-            <Faq />
+            <div className="py-16">
+                <Fundraiser />
+            </div>
+            <div className="py-16">
+                <Stripes />
+            </div>
+            <div className="py-16">
+                <Team />
+            </div>
+            <div className="py-16">
+                <Faq />
+            </div>
         </main>
     );
 }

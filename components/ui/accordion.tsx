@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
+import { Plus, Minus } from "lucide-react"
 import clsx from "clsx"
 
 const cn = clsx;
@@ -23,12 +24,14 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180",
+        "flex flex-1 items-center justify-between font-medium transition-all",
         className
       )}
       {...props}
     >
       {children}
+      <Plus className="h-4 w-4 shrink-0 transition-transform duration-200 group-data-[state=open]:hidden" />
+      <Minus className="h-4 w-4 shrink-0 transition-transform duration-200 hidden group-data-[state=open]:block" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))

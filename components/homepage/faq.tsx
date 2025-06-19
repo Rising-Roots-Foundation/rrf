@@ -1,6 +1,5 @@
 "use client"
 
-import { PlusIcon, MinusIcon } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 const faqs = [
@@ -47,7 +46,6 @@ export default function Faq() {
               >
                 <AccordionTrigger className="px-6 py-4 hover:bg-green-700/30 transition-all text-left">
                   <span className="font-medium text-base md:text-lg">{faq.question}</span>
-                  <CustomTriggerIcon />
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4 pt-2 text-green-100">{faq.answer}</AccordionContent>
               </AccordionItem>
@@ -59,14 +57,3 @@ export default function Faq() {
   )
 }
 
-// Custom trigger icon component to replace the default chevron
-function CustomTriggerIcon() {
-  return (
-    <div className="accordion-icon relative ml-2">
-      <div className="h-6 w-6 rounded-full border border-green-400 flex items-center justify-center">
-        <PlusIcon className="h-3 w-3 text-green-200 absolute transition-opacity group-data-[state=open]:opacity-0" />
-        <MinusIcon className="h-3 w-3 text-green-200 absolute opacity-0 group-data-[state=open]:opacity-100" />
-      </div>
-    </div>
-  )
-}

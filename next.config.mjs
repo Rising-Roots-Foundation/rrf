@@ -46,6 +46,9 @@ const nextConfig = {
             },
         ],
     },
+  experimental: {
+    allowedDevOrigins: ["https://3000-risingrootsfound-rrf-ai25077ev90.ws-eu120.gitpod.io"],
+  },
 };
 
 export default nextConfig;

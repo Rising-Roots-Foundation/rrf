@@ -129,6 +129,14 @@ module.exports = {
 			'footer-texture': "url('/images/footer-texture.png')"
   		},
   		keyframes: {
+  			"accordion-down": {
+  		      from: { height: "0" },
+  		      to: { height: "var(--radix-accordion-content-height)" },
+  		    },
+  		    "accordion-up": {
+  		      from: { height: "var(--radix-accordion-content-height)" },
+  		      to: { height: "0" },
+  		    },
   			fadeIn: {
   				'0%': {
   					opacity: '0'
@@ -147,6 +155,8 @@ module.exports = {
   			}
   		},
   		animation: {
+  			"accordion-down": "accordion-down 0.2s ease-out",
+  		    "accordion-up": "accordion-up 0.2s ease-out",
   			fadeIn: 'fadeIn 0.5s ease-in-out',
   			slideIn: 'slideIn 0.5s ease-in-out'
   		},

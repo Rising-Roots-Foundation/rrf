@@ -1,10 +1,9 @@
 'use client';
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React from 'react';
+import TiltedCard from './TiltedCard';
 import team1 from '@/app/images/juliana.jpg';
 import team2 from '@/app/images/kofi.jpg';
 import team3 from '@/app/images/ami.jpg';
-
 
 const teamMembers = [
     {
@@ -30,78 +29,37 @@ const teamMembers = [
     },
 ];
 
-// Truncate Function
-const truncateBio = (bio, isExpanded) => {
-    const limit = 110;
-    if (isExpanded || bio.length <= limit) {
-        return bio;
-    }
-    return bio.slice(0, limit) + '...';
-};
-
-const TeamCard = ({ image, name, position, bio, isReversed, isExpanded, onToggleExpand }) => {
-    return (
-        <div className={`flex items-center bg-gray-200 pt-5 rounded-3xl lg:w-4/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col ${isReversed ? 'sm:flex-row-reverse' : ''}`}>
-            <div className="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 sm:ml-10 mt-10 inline-flex flex-col items-center justify-center rounded-full flex-shrink-0">
-                <Image
-                    src={image}
-                    alt={name}
-                    className="w-full h-full rounded-full lg:mr-10 lg:ml-10 md:mr-10 md:ml-5"
-                />
-                <h3 className="text-green-800 text-l title-font font-medium-geist mt-2 sm:px-10 md:px-10 px-10 lg:px-10 uppercase">
-                    {position}
-                </h3>
-            </div>
-
-            <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                <h2 className="text-green-800 text-lg title-font font-medium-geist mb-2 md:mt-2 lg:mt-2 sm:px-10 md:px-10 px-10 lg:px-10 uppercase">{name}</h2>
-
-                <p className="leading-relaxed text-base text-pretty sm:px-10 md:px-10 px-10">{truncateBio(bio, isExpanded)}</p>
-                {bio.length > 120 && (
-                    <button
-                        onClick={onToggleExpand}
-                        className="bg-gray-300 rounded-xl md:ml-10 md:mr-10 lg:ml-10 lg:mr-10 mt-3 md:mt-10 text-green-800 inline-flex sm:px-7 md:px-7 px-7 items-center"
-                    >
-                        {isExpanded ? 'Show Less' : 'Expand'}
-                        <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                )}
-            </div>
-        </div>
-    );
-};
-
 function Team() {
-    const [expandedCard, setExpandedCard] = useState(null);
-
-    const handleToggleExpand = (id) => {
-        setExpandedCard((prev) => (prev === id ? null : id));
-    };
-
     return (
         <section className="text-gray-600 body-font">
             <div className="container px-5 py-24 mx-auto">
-                <div className="text-center mb-1">
+                <div className="text-center mb-10">
                     <h1 className="md:text-3xl text-2xl font-semibold-geist text-black uppercase">Meet Our Team</h1>
                     <p className="p-5 font-geist text-l md:text-xl mb-10">
                         Empowering charities with innovative <br /> solutions for a brighter future.
                     </p>
                 </div>
 
-                {teamMembers.map((member, index) => (
-                    <TeamCard
-                        key={member.id}
-                        image={member.image}
-                        name={member.name}
-                        position={member.position}
-                        bio={member.bio}
-                        isReversed={index % 2 === 1} // Corrected alternating layout
-                        isExpanded={expandedCard === member.id}
-                        onToggleExpand={() => handleToggleExpand(member.id)}
-                    />
-                ))}
+                <div className="flex flex-wrap justify-center gap-8">
+                    {teamMembers.map((member) => (
+                        <TiltedCard
+                            key={member.id}
+                            imageSrc={member.image}
+                            altText={member.name}
+                            containerHeight="350px"
+                            containerWidth="300px"
+                            imageHeight="350px"
+                            imageWidth="300px"
+                            overlayContent={
+                                <>
+                                    <h3 className="text-xl font-bold">{member.name}</h3>
+                                    <p className="text-lg">{member.position}</p>
+                                    <p className="text-sm mt-2">{member.bio}</p>
+                                </>
+                            }
+                        />
+                    ))}
+                </div>
             </div>
         </section>
     );
