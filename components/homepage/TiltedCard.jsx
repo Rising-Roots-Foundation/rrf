@@ -12,8 +12,6 @@ const TiltedCard = ({
   imageWidth = '300px',
   rotateAmplitude = 12,
   scaleOnHover = 1.2,
-  showMobileWarning = false,
-  showTooltip = true,
   displayOverlayContent = true,
   overlayContent,
 }) => {

@@ -3,7 +3,7 @@ import PageBanner from '@/components/PageBanner';
 import aboutImg from '@/app/images/aboutus.jpg';
 import React from 'react';
 import Image from 'next/image';
-import { Heart, Target, Eye } from 'lucide-react';
+import { Target, Eye } from 'lucide-react';
 
 function Page() {
   return (
